@@ -76,13 +76,22 @@ function initRevealOnScroll() {
 
 /* ---------------------------------------------------------
    3. 네 가지 플레이 카드 영상
-   - 마우스를 올리면 재생, 떼면 멈추고 처음 사진(poster)으로 되돌림
+   - 마우스를 올리면 소리와 함께 재생, 떼면 멈추고 처음 사진(poster)으로 되돌림
+   - 브라우저 규칙: 페이지를 한 번도 클릭하지 않았으면 소리 있는 자동 재생을 막음
+     → 그때는 소리 없이 재생하고, 카드를 클릭하면 소리가 켜짐
    --------------------------------------------------------- */
 function initModeCardVideos() {
   document.querySelectorAll(".mode-card").forEach((card) => {
     const video = card.querySelector("video");
 
-    card.addEventListener("mouseenter", () => video.play());
+    card.addEventListener("mouseenter", () => {
+      video.muted = false;
+      video.play().catch(() => {
+        video.muted = true;
+        video.play();
+      });
+    });
+    card.addEventListener("click", () => (video.muted = false));
     card.addEventListener("mouseleave", () => video.load()); // load() = 처음 상태(poster)로
   });
 }
