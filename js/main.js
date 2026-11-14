@@ -9,6 +9,9 @@
     처리해서 JS 가 필요 없습니다)
    ========================================================= */
 
+// 새로고침(F5)하면 항상 맨 위에서 시작 — 보던 위치로 돌아가면 여러 섹션 효과가 한꺼번에 나와서
+history.scrollRestoration = "manual";
+
 document.addEventListener("DOMContentLoaded", () => {
   initMakingSectionSteps();
   initRevealOnScroll();

@@ -4,6 +4,9 @@
    2. 단어 기록 섹션이 화면에 들어오면 .is-visible 붙이기 (움직임은 CSS)
    ========================================================= */
 
+// 새로고침(F5)하면 항상 맨 위에서 시작 — 보던 위치로 돌아가면 여러 섹션 효과가 한꺼번에 나와서
+history.scrollRestoration = "manual";
+
 const zones = document.querySelectorAll(".zone");
 const floorPlan = document.querySelector(".zones__floor-plan");
 const blink = document.querySelector(".zones__blink");
