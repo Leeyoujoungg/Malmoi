@@ -1,16 +1,17 @@
 /* =========================================================
    gnb.css — 상단 메뉴 (Figma: GNB, 1640 x 96)
    - 두 페이지(index.html, experience.html)에서 같이 씁니다.
-   - 각 페이지 첫 섹션 안 Figma 위치(왼쪽 140px, 위 60px)에 고정되어 있고,
-     스크롤을 따라오지 않습니다.
+   - 화면 위쪽에 고정되어 스크롤해도 따라옵니다. (Figma 위치: 왼쪽 140px, 위 60px)
    - 메뉴를 누르면 href 의 #아이디 섹션으로 부드럽게 이동합니다. (base.css 의 scroll-behavior)
    - 메뉴 색: 첫 번째 메뉴(= 지금 페이지)가 분홍 배경 + 흰 글자 (Figma GNB 기본 모습)
      다른 메뉴에 마우스를 올리면 분홍이 그 메뉴로 옮겨감
    ========================================================= */
 
-.gnb {
-  position: absolute;
-  left: 140px;
+/* .section__inner > 를 붙인 이유: 섹션 CSS 의 "position: absolute" 보다 우선하게 */
+.section__inner > .gnb {
+  position: fixed;
+  z-index: 100;
+  left: calc(50% - 820px); /* 화면 가운데 정렬 (1920px 화면에서 140px) */
   top: 60px;
   width: 1640px;
   height: 102px; /* 바 96px + 아래 그림자 6px */

@@ -97,22 +97,6 @@
 /* 전시 평면도 (START, END, 입구, 번호 등 표시는 이미지에 포함) */
 .zones__floor-plan { left: 63px; top: 139px; width: 1141px; height: 941px; }
 
-/* 평면도 위 깜빡임 상자 (위치 = 평면도 이미지 속 공간 칸 위치 + 평면도 left/top) */
-.zones__blink {
-  opacity: 0;
-  pointer-events: none;
-}
-.zones__blink--1 { left: 311px; top: 194px; width: 643px; height: 431px; border-radius: 20px; background-color: #ff3d8b; }
-.zones__blink--2 { left: 647px; top: 644px; width: 111px; height: 83px;  border-radius: 14px; background-color: #19c8ff; }
-.zones__blink--3 { left: 647px; top: 769px; width: 111px; height: 123px; border-radius: 14px; background-color: #2ed67a; }
-
-/* 0.5초에 한 번씩 3번 깜빡 */
-.zones__blink.is-blinking { animation: zone-blink 0.5s ease-in-out 3; }
-
-@keyframes zone-blink {
-  50% { opacity: 0.45; }
-}
-
 
 /* ---------- 4. 오른쪽 공간 안내 패널 ---------- */
 .zones__panel {

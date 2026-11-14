@@ -1,17 +1,18 @@
 /* =========================================================
    floating-buttons.css — 오른쪽 아래 버튼 2개
    (Figma: "button / 맨 위로" 동그란 글자 버튼 + 화살표 버튼)
-   - 두 페이지 마지막 섹션 안 Figma 위치(1707.5, 1041)에 고정되어 있고,
-     스크롤을 따라오지 않습니다.
+   - 화면 오른쪽 아래에 고정되어 스크롤해도 따라옵니다. (가로 위치는 Figma 1707.5px)
      · 메인 페이지 팀 소개 섹션:   "체험 소개" → experience.html / 화살표 → #hero
      · 체험소개 페이지 단어 기록: "말모이"    → index.html      / 화살표 → #experience
    ========================================================= */
 
-/* 두 버튼을 묶는 틀 — 위치 = 글자 버튼의 Figma 좌표 */
-.floating-buttons {
-  position: absolute;
-  left: 1707.5px;
-  top: 1041px;
+/* 두 버튼을 묶는 틀
+   .section__inner > 를 붙인 이유: 섹션 CSS 의 "position: absolute" 보다 우선하게 */
+.section__inner > .floating-buttons {
+  position: fixed;
+  z-index: 100;
+  left: calc(50% + 747.5px); /* 1920px 화면에서 1707.5px */
+  bottom: 60px;
   width: 72px;
   height: 150px;
   margin: 0;
