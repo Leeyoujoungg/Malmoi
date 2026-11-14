@@ -1,0 +1,210 @@
+/* =========================================================
+   exp-section01-zones.css — 체험소개 1. 체험 소개
+   (Figma: 최종—체험소개 > 전시 현장 — 구상도, 1920 x 1983)
+   - 배경색은 experience.css 에 있고, 여기에는 배경 위에 얹는 요소만 있습니다.
+   - 모든 요소는 .section__inner(1920px 박스) 안에서
+     position: absolute + Figma 의 x(left) / y(top) 값으로 배치합니다.
+   - 이미지: assets/images/exp-section01-zones/
+   - 지금은 1단계(메인 체험 공간)가 선택된 모습으로 고정되어 있습니다.
+     (2·3단계 평면도 이미지 floor-plan-step2/3 은 단계 전환 기능을 넣을 때 사용)
+   ========================================================= */
+
+.section--exp-intro .section__inner > * {
+  position: absolute;
+  margin: 0;
+}
+
+
+/* ---------- 1. 배경요소 ---------- */
+
+/* 왼쪽 노란 원, 오른쪽 위 분홍 원 (잘린 모양 그대로 이미지로 받음) */
+.zones__circle-left      { left: 0;      top: 326px; width: 370px; height: 555px; }
+.zones__circle-top-right { left: 1560px; top: 60px;  width: 360px; height: 460px; }
+
+/* 제목 양옆 반짝이 (이미지에 기울기 포함) */
+.zones__sparkle--left  { left: 397px;  top: 368px;   width: 84px; height: 84px; }
+.zones__sparkle--right { left: 1469px; top: 319.6px; width: 64px; height: 64px; }
+
+/* 제목 "공동의 기록" 아래 노란 형광펜 */
+.zones__highlight {
+  left: 436px;
+  top: 587px;
+  width: 452px;
+  height: 46px;
+  border-radius: 23px;
+  background-color: var(--color-highlight);
+}
+
+
+/* ---------- 2. 라벨, 제목, 설명 (가운데 정렬) ---------- */
+.zones__eyebrow {
+  left: 960px;
+  top: 332px;
+  transform: translateX(-50%);
+  padding: 12px 28px;
+  border-radius: 999px;
+  background-color: var(--color-navy);
+  font-family: var(--font-title);
+  font-size: 26px;
+  line-height: 1.2;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.zones__title {
+  left: 960.5px;
+  top: 423px;
+  transform: translateX(-50%);
+  font-family: var(--font-title);
+  font-size: 84px;
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--color-navy);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.zones__lead {
+  left: 960.5px;
+  top: 669px;
+  width: 1009px;
+  transform: translateX(-50%);
+  font-family: var(--font-noto);
+  font-size: 30px;
+  line-height: 1.6;
+  color: var(--color-navy);
+  text-align: center;
+}
+
+
+/* ---------- 3. 전시장 동선 영역 (1920 x 1080, 섹션 위에서 702px) ---------- */
+.zones__area {
+  left: 0;
+  top: 702px;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+}
+
+/* 영역 안 요소 위치는 영역 기준 */
+.zones__area > * {
+  position: absolute;
+}
+
+/* 오른쪽 하늘색 원 (오른쪽이 잘린 모양 그대로 이미지로 받음) */
+.zones__circle-right { left: 1691px; top: 333px; width: 230px; height: 284px; }
+
+/* 전시 평면도 (START, END, 입구, 번호 등 표시는 이미지에 포함) */
+.zones__floor-plan { left: 63px; top: 139px; width: 1141px; height: 941px; }
+
+
+/* ---------- 4. 오른쪽 공간 안내 패널 ---------- */
+.zones__panel {
+  left: 1107.9px;
+  top: 192px;
+  width: 672px;
+  height: 717px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 42px 36px;
+  overflow: hidden;
+  border: 4px solid var(--color-navy);
+  border-radius: 32px;
+  background-color: #ffffff;
+  box-shadow: 3px 10px 0 0 var(--color-navy);
+  color: var(--color-navy);
+}
+
+.zones__panel-title {
+  margin: 0;
+  font-family: var(--font-jua);
+  font-size: 48px;
+  font-weight: normal;
+  line-height: 1.25;
+}
+
+/* 공간별 색 (번호 동그라미 배경, 영문 이름 글자색, 선택됐을 때 그림자) */
+.zone--1 { --zone-point: #ff3d8b; --zone-soft: #ffe3f3; }
+.zone--2 { --zone-point: #19c8ff; --zone-soft: #ddf7ff; }
+.zone--3 { --zone-point: #2ed67a; --zone-soft: #e0ffe9; }
+
+/* 기본(선택 안 된) 공간: 흐리게 */
+.zone {
+  padding: 22px 32px;
+  border: 3px solid rgba(27, 26, 122, 0.2);
+  border-radius: 36px;
+  background-color: rgba(255, 255, 255, 0.6);
+  opacity: 0.45;
+}
+
+/* 선택된 공간: 진한 테두리 + 색 그림자 + 설명 표시 */
+.zone--active {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px 32px 32px;
+  border: 4px solid var(--color-navy);
+  background-color: #ffffff;
+  box-shadow: 0 12px 0 0 var(--zone-point);
+  opacity: 1;
+}
+
+.zone__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* 번호 동그라미: 기본은 연한 색 + 남색 글자, 선택되면 진한 색 + 흰 글자 */
+.zone__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border: 3px solid var(--color-navy);
+  border-radius: 999px;
+  background-color: var(--zone-soft);
+  font-family: var(--font-title);
+  font-size: 20px;
+  color: var(--color-navy);
+}
+.zone--active .zone__num {
+  background-color: var(--zone-point);
+  color: #ffffff;
+}
+
+.zone__names {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  white-space: nowrap;
+}
+
+.zone__name {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 32px;
+  line-height: 42px; /* Figma 줄 높이 */
+}
+
+.zone__name-en {
+  margin: 0;
+  font-family: var(--font-preah);
+  font-size: 20px;
+  line-height: 36px; /* Figma 줄 높이 */
+  color: var(--zone-point);
+}
+
+/* 설명 (Figma 에서 번호 동그라미 오른쪽부터 시작) */
+.zone__desc {
+  margin: 0;
+  padding-left: 62px;
+  font-family: var(--font-noto);
+  font-size: 24px;
+  line-height: 43px; /* Figma 줄 높이 */
+  color: rgba(27, 26, 122, 0.85);
+  white-space: nowrap;
+}

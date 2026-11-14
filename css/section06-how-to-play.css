@@ -1,0 +1,191 @@
+/* =========================================================
+   section06-how-to-play.css — 6. 플레이 방법
+   (Figma: Frame 5904, 1920 x 1291)
+   - 배경색은 main.css 에 있고, 여기에는 배경 위에 얹는 요소만 있습니다.
+   - 모든 요소는 .section__inner(1920px 박스) 안에서
+     position: absolute + Figma 의 x(left) / y(top) 값으로 배치합니다.
+   - 이미지: assets/images/section06-how-to-play/
+   - 인터랙션은 아직 넣지 않았습니다.
+   ========================================================= */
+
+.section--how-to-play .section__inner > * {
+  position: absolute;
+  margin: 0;
+}
+
+
+/* ---------- 1. 배경요소 ---------- */
+
+/* 오른쪽 분홍 원 (오른쪽이 잘린 모양 그대로 이미지로 받음) */
+.play__circle-right { left: 1756px; top: 832px; width: 165px; height: 227px; }
+
+/* 왼쪽 위 노란 원 (위·왼쪽이 잘린 모양 그대로 이미지로 받음) */
+.play__circle-top-left { left: 0; top: 0; width: 202px; height: 196px; }
+
+/* 왼쪽 아래 하늘색 원 — 아래쪽 약 304px 는 다음 섹션(네 가지 플레이) 위로 내려감 */
+.play__circle-bottom-left { left: 0; top: 1154.7px; width: 268px; height: 441px; }
+
+/* 제목 아래 노란 형광펜 */
+.play__highlight {
+  left: 934px;
+  top: 293px;
+  width: 523px;
+  height: 14px;
+  border-radius: 7px;
+  background-color: rgba(255, 233, 74, 0.8);
+}
+
+/* 왼쪽 파란 별, 오른쪽 음표 (이미지에 기울기 포함) */
+.play__star       { left: 185.6px;  top: 319.6px; width: 72px; height: 72px; }
+.play__music-note { left: 1619.1px; top: 211.9px; width: 74px; height: 68px; }
+
+
+/* ---------- 2. 제목, 설명 (가운데 정렬) ---------- */
+.play__title {
+  left: 946.5px;
+  top: 246px;
+  transform: translateX(-50%);
+  font-family: var(--font-title);
+  font-size: 56px;
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--color-navy);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.play__desc {
+  left: 946.5px;
+  top: 340px;
+  width: 1009px;
+  transform: translateX(-50%);
+  font-family: var(--font-noto);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--color-navy);
+  text-align: center;
+}
+
+
+/* ---------- 3. 단계 카드 3개 ---------- */
+/* 카드별로 다른 것: 위치, 그림자 색 */
+.play-card--1 { left: 135px;  --card-shadow: #ff3d8b; }
+.play-card--2 { left: 693px;  --card-shadow: #19c8ff; }
+.play-card--3 { left: 1251px; --card-shadow: #2ed67a; }
+
+.play-card {
+  top: 521px;
+  width: 533px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 24px 24px 44px;
+  overflow: hidden;
+  border: 4px solid var(--color-navy);
+  border-radius: 48px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 0 0 var(--card-shadow);
+}
+
+/* 게임 화면 이미지 */
+.play-card__img {
+  width: 100%;
+  height: 268px;
+  object-fit: cover;
+  border-radius: 32px;
+}
+
+.play-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 16px;
+  color: var(--color-navy);
+}
+
+/* 번호 배지 + 카드 제목 */
+.play-card__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.play-card__num {
+  padding: 6px 16px;
+  border-radius: 999px;
+  background-color: var(--color-navy);
+  font-family: var(--font-jua);
+  font-size: 22px;
+  line-height: 28px; /* 배지 높이 40px (Figma) */
+  color: #ffffff;
+}
+
+.play-card__title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 42px; /* Figma 줄 높이 */
+}
+
+.play-card__desc {
+  margin: 0;
+  font-family: var(--font-noto);
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(27, 26, 122, 0.85);
+  white-space: nowrap;
+}
+
+
+/* ---------- 4. 게임 흐름 바 ---------- */
+.play-flow {
+  left: 135px;
+  top: 1049px;
+  width: 1645px;
+  height: 95px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border: 4px solid var(--color-navy);
+  border-radius: 999px;
+  background-color: #ffffff;
+}
+
+/* 단계 칩: 아이콘 + 글자 */
+.play-flow__chip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 68px;
+  padding: 0 32px 0 20px;
+  border: 3px solid var(--color-navy);
+  border-radius: 999px;
+  font-family: var(--font-title);
+  font-size: 26px;
+  color: var(--color-navy);
+  white-space: nowrap;
+}
+.play-flow__chip img { width: 48px; height: 48px; }
+
+.play-flow__chip--sound { background-color: #ff9bea; }
+.play-flow__chip--hand  { background-color: #8fe9ff; }
+.play-flow__chip--card  { background-color: #9df5b0; }
+
+/* 칩 사이 화살표 */
+.play-flow__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background-color: var(--color-navy);
+  font-family: var(--font-noto);
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+}

@@ -1,0 +1,123 @@
+/* =========================================================
+   section01-hero.css — 1. 첫 화면 요소 (Figma: Frame 5906, 1920 x 1484)
+   - 배경색은 main.css 에 있고, 여기에는 배경 위에 얹는 요소만 있습니다.
+   - 모든 요소는 .section__inner(1920px 박스) 안에서
+     position: absolute + Figma 의 x(left) / y(top) 값으로 배치합니다.
+   - 이미지: assets/images/section01-hero/, assets/images/common/
+   - 인터랙션(호버, 클릭, 애니메이션)은 아직 넣지 않았습니다.
+   ========================================================= */
+
+.section--hero .section__inner > * {
+  position: absolute;
+  margin: 0;
+}
+
+
+/* ---------- 1. 배경요소 ---------- */
+
+/* 캐릭터 뒤 하늘색 점무늬 */
+.hero__char-dots { left: 575px; top: 800px; width: 786px; height: 185px; }
+
+/* 제목 "감정의 숲을" 아래 노란 형광펜 */
+.hero__highlight {
+  left: 436px;
+  top: 578px;
+  width: 452px;
+  height: 46px;
+  border-radius: 23px;
+  background-color: var(--color-highlight);
+}
+
+/* 반짝이 */
+.hero__sparkle--right { left: 1470px;  top: 490px; width: 64px; height: 64px; }
+.hero__sparkle--left  { left: 397.5px; top: 358px; width: 84px; height: 84px; }
+
+/* 가운데에서 양옆으로 퍼지는 반투명 빛줄기 */
+.hero__light--left  { left: 0;     top: 541.7px; width: 960px; height: 610px; }
+.hero__light--right { left: 960px; top: 503px;   width: 960px; height: 649px; }
+
+/* 장식 원 (화면 밖으로 잘린 원은 잘린 모양 그대로 이미지로 받음) */
+.hero__circle--top-left     { left: 0;      top: 120px;    width: 440px; height: 620px; }
+.hero__circle--top-right    { left: 1560px; top: 60px;     width: 360px; height: 460px; }
+.hero__circle--mid-right    { left: 1500px; top: 760.6px;  width: 300px; height: 300px; }
+.hero__circle--mid-left     { left: 150px;  top: 900.6px;  width: 220px; height: 220px; }
+.hero__circle--bottom-right { left: 1380px; top: 1204px;   width: 520px; height: 280px; }
+.hero__circle--bottom-left  { left: 0;      top: 1084px;   width: 260px; height: 380px; }
+
+
+/* ---------- 2. 글자 ---------- */
+
+/* 라벨 "리듬게임으로 감정의 말을 찾는 전시" */
+.hero__eyebrow {
+  left: 759px;
+  top: 332px;
+  width: 402px;
+  height: 55px;
+  background: url("../assets/images/section01-hero/eyebrow-bg.png") no-repeat center / 100% 100%;
+  font-family: var(--font-jua);
+  font-size: 26px;
+  line-height: 55px;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* 큰 제목 */
+.hero__title {
+  left: 960px;
+  top: 423px;
+  transform: translateX(-50%);
+  font-family: var(--font-title);
+  font-size: 84px;
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--color-navy);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* 설명 글 */
+.hero__lead {
+  left: 960px;
+  top: 669px;
+  transform: translateX(-50%);
+  font-family: var(--font-noto);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--color-navy);
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+/* ---------- 3. 캐릭터 4명 ---------- */
+.hero__char--hee  { left: 400.3px;  top: 825.8px; width: 305.1px; height: 360.9px; }
+.hero__char--no   { left: 701.1px;  top: 836px;   width: 275px;   height: 350.5px; }
+.hero__char--ae   { left: 977.5px;  top: 867.9px; width: 248.6px; height: 321.7px; }
+.hero__char--rock { left: 1222.6px; top: 857.7px; width: 300.2px; height: 331.8px; }
+
+
+/* ---------- 4. 스크롤 안내 ---------- */
+.hero__scroll-hint {
+  left: 733px;
+  top: 1244px;
+  width: 454px;
+  height: 67px;
+  background: url("../assets/images/section01-hero/scroll-hint-bg.png") no-repeat center / 100% 100%;
+  font-family: var(--font-jua);
+  font-size: 24px;
+  line-height: 67px;
+  color: var(--color-navy);
+  text-align: center;
+}
+
+
+/* ---------- 5. 감정 단어 칩 (이미지에 기울기·그림자 포함) ---------- */
+.hero__word--heunyeon { left: 170px;     top: 903.4px;  width: 199px; height: 97px; }
+.hero__word--chungman { left: 112.9px;   top: 1180px;   width: 199px; height: 92px; }
+.hero__word--hwanghol { left: 1550.5px;  top: 900px;    width: 199px; height: 97px; }
+.hero__word--hwanhui  { left: 1600px;    top: 1146.8px; width: 197px; height: 94px; }
+.hero__word--gomu     { left: 1244.1px;  top: 268px;    width: 196px; height: 89px; }
+
+
+/* 상단 메뉴(GNB)는 이 섹션 안에 있지만, 스타일은 css/gnb.css 에 따로 있습니다. */

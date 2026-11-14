@@ -1,0 +1,176 @@
+/* =========================================================
+   section03-why-rhythm.css — 3. 리듬게임 이유
+   (Figma: 03 왜 리듬에 맞춰 말을 골랐을까요?, 1920 x 1080)
+   - 배경색은 main.css 에 있고, 여기에는 배경 위에 얹는 요소만 있습니다.
+   - 모든 요소는 .section__inner(1920px 박스) 안에서
+     position: absolute + Figma 의 x(left) / y(top) 값으로 배치합니다.
+   - 이미지: assets/images/section03-why-rhythm/
+   - 인터랙션은 아직 넣지 않았습니다. (카드의 출처 링크만 새 창으로 열림)
+   ========================================================= */
+
+.section--why-rhythm .section__inner > * {
+  position: absolute;
+  margin: 0;
+}
+
+
+/* ---------- 1. 배경요소 ---------- */
+
+/* 섹션 밖으로 나가는 원은 섹션 경계에서 잘라서 보여줌 */
+.why__clip {
+  overflow: hidden;
+}
+.why__clip img {
+  position: absolute;
+}
+
+/* 오른쪽 아래 큰 노란 원 (711px, 섹션 아래로 나간 부분은 잘림) */
+.why__clip--bottom-right { left: 1407px; top: 782px; width: 513px; height: 298px; }
+.why__clip--bottom-right img { left: 0; top: 0; width: 711px; height: 711px; }
+
+/* 왼쪽 위 작은 노란 원 (360px, 섹션 위·왼쪽 밖으로 나간 부분은 잘림) */
+.why__clip--top-left { left: 0; top: 0; width: 220px; height: 240px; }
+.why__clip--top-left img { left: -140px; top: -120px; width: 360px; height: 360px; }
+
+/* 02 섹션과의 경계에 걸친 왼쪽 원 (Figma 에서 섹션 바깥 레이어) */
+.why__circle-boundary { left: 0; top: -84.5px; width: 237px; height: 314px; }
+
+/* 제목 아래 노란 형광펜 */
+.why__highlight {
+  left: 122px;
+  top: 290px;
+  width: 796px;
+  height: 14px;
+  border-radius: 7px;
+  background-color: rgba(255, 233, 74, 0.8);
+}
+
+/* 오른쪽 반짝이, 왼쪽 아래 음표 (이미지에 기울기 포함) */
+.why__sparkle    { left: 1742.7px; top: 209.5px; width: 69px; height: 69px; }
+.why__music-note { left: 63px;     top: 917.1px; width: 74px; height: 68px; }
+
+
+/* ---------- 2. 제목, 설명 ---------- */
+.why__title {
+  left: 139px;
+  top: 243px;
+  font-family: var(--font-title);
+  font-size: 56px;
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--color-navy);
+  white-space: nowrap;
+}
+
+.why__lead {
+  left: 139px;
+  top: 337px;
+  font-family: var(--font-pretendard);
+  font-size: 26px;
+  line-height: 43px;
+  color: rgba(27, 26, 122, 0.9);
+  white-space: nowrap;
+}
+
+.why__lead strong { font-weight: 700; }
+.why__em--pink  { color: var(--color-hot-pink); }
+.why__em--blue  { color: #0a8fd0; }
+.why__em--green { color: #1aa85a; }
+
+
+/* ---------- 3. 카드 3개 ---------- */
+/* 카드별로 다른 것: 위치, 그림자 색, 아이콘 배경색, 번호 색, 단계 배지 색 */
+.why-card--1 { left: 141px;  --card-point: #ff3d8b; --card-icon-bg: #ff9bea; --card-phase-bg: #ffe3f3; }
+.why-card--2 { left: 711px;  --card-point: #19c8ff; --card-icon-bg: #8fe9ff; --card-phase-bg: #ddf7ff; }
+.why-card--3 { left: 1281px; --card-point: #2ed67a; --card-icon-bg: #9df5b0; --card-phase-bg: #e0ffe9; }
+
+.why-card {
+  top: 480px;
+  width: 498px;
+  height: 385px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 32px 28px;
+  border: 4px solid var(--color-navy);
+  border-radius: 40px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 0 0 var(--card-point);
+  color: var(--color-navy);
+}
+
+/* 카드 윗줄: 아이콘 + 번호 + 단계 배지 */
+.why-card__top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.why-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  border: 4px solid var(--color-navy);
+  border-radius: 999px;
+  background-color: var(--card-icon-bg);
+}
+.why-card__icon img { width: 44px; height: 44px; }
+
+.why-card__num {
+  font-family: var(--font-jua);
+  font-size: 24px;
+  color: var(--card-point);
+}
+
+.why-card__phase {
+  margin-left: -6px; /* 번호와 배지 사이 8px (Figma) */
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: var(--card-phase-bg);
+  font-family: var(--font-jua);
+  font-size: 16px;
+}
+
+.why-card__title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 1.25;
+}
+
+.why-card__desc {
+  margin: 0;
+  font-family: var(--font-pretendard);
+  font-size: 20px;
+  line-height: 32px;
+}
+
+/* 카드 아래쪽: 구분선 + 근거 + 출처 링크 */
+.why-card__source {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 16px;
+  border-top: 2px solid rgba(27, 26, 122, 0.12);
+}
+
+.why-card__evidence {
+  margin: 0;
+  font-family: var(--font-pretendard);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: rgba(27, 26, 122, 0.8);
+  opacity: 0.6;
+}
+
+.why-card__link {
+  align-self: flex-start;
+  font-family: var(--font-noto);
+  font-size: 14px;
+  color: rgba(27, 26, 122, 0.5);
+}

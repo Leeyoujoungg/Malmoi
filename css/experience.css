@@ -1,0 +1,22 @@
+/* =========================================================
+   experience.css — 체험소개 페이지 섹션 배경
+   (Figma: 최종—체험소개, 1920 x 3724)
+   - 지금은 각 섹션의 "크기"와 "배경색"만 들어가 있습니다.
+   - .page / .section / .main-footer(푸터 배경) 공통 규칙은 main.css 에 있습니다.
+   - 섹션 순서는 experience.html 과 같고, 괄호 안은 Figma 레이어 이름입니다.
+   ========================================================= */
+
+/* ---------- 1. 체험 소개 (전시 현장 — 구상도) ---------- */
+.section--exp-intro {
+  height: 1983px;
+  background: linear-gradient(to bottom, var(--color-sky-light), var(--color-white));
+}
+
+/* ---------- 2. 단어 기록 (05 단어 기록) ---------- */
+.section--word-record {
+  height: 1484px;
+  background-color: var(--color-blush);
+}
+
+/* ---------- 3. 하단 푸터 (Footer) ---------- */
+/* 배경·높이·위 1px 간격은 main.css 의 .main-footer 를 그대로 사용 */

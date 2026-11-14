@@ -1,0 +1,110 @@
+/* =========================================================
+   base.css — 사이트 전체 공통 스타일
+   - 폰트, 색상/크기 변수, 기본 초기화만 둡니다.
+   - 섹션별 스타일은 main.css 에 작성하세요.
+   ========================================================= */
+
+/* ---------- 1. 웹폰트 ---------- */
+/* Cafe24 웹폰트: CDN에서 불러오므로 방문자 PC에 폰트가 없어도 똑같이 보임 */
+@font-face {
+  font-family: "Cafe24Ssurround";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- 2. 변수 (Figma: Frame 5907 기준값) ---------- */
+:root {
+  /* 페이지 전체 폭 */
+  --page-width: 1920px;
+
+  /* 배경 색 팔레트 */
+  --color-white: #ffffff;   /* 페이지 기본 배경 */
+  --color-sky: #b5f8ff;     /* 첫 화면 그라데이션 시작 */
+  --color-sky-soft: #cdfbff;/* 세계관 안내 그라데이션 끝 */
+  --color-cream: #fffbdd;   /* 03 / 플레이 방법 섹션 */
+  --color-lemon: #fffac7;   /* 팀 소개 그라데이션 끝 */
+  --color-pink: #ffe3f3;    /* 06 제작 과정 — step 01 */
+  --color-yellow: #fff6c9;  /* 06 제작 과정 — step 02 */
+  --color-blue: #ddf7ff;    /* 06 제작 과정 — step 03 */
+  --color-green: #e1ffe7;   /* 06 제작 과정 — step 04 */
+  --color-footer: #d9fbff;  /* 하단 푸터 */
+  --color-sky-light: #c1f9ff; /* 체험소개 페이지 첫 섹션 그라데이션 시작 */
+  --color-blush: #fff0fa;     /* 체험소개 페이지 단어 기록 섹션 */
+
+  /* 글자·포인트 색 */
+  --color-navy: #1b1a7a;    /* 기본 글자색, 테두리 */
+  --color-hot-pink: #ff3d8b;/* 강조 (활성 메뉴 등) */
+  --color-highlight: #ffe94a; /* 노란 형광펜 */
+
+  /* 글꼴 (index.html 에서 웹폰트를 불러옴) */
+  --font-title: "Cafe24Ssurround", "Malgun Gothic", sans-serif; /* 큰 제목 */
+  --font-jua: "Jua", "Malgun Gothic", sans-serif;               /* 메뉴, 라벨, 버튼 */
+  --font-noto: "Noto Sans KR", "Malgun Gothic", sans-serif;     /* 첫 화면 설명 글 */
+  --font-pretendard: "Pretendard", "Malgun Gothic", sans-serif; /* 본문 */
+  --font-bagel: "Bagel Fat One", "Malgun Gothic", sans-serif;   /* 영문 제목 (Team OCTAVE) */
+  --font-preah: "Preahvihear", "Noto Sans KR", "Malgun Gothic", sans-serif; /* 체험소개 영문 부제 (한글은 Noto Sans KR 로 표시) */
+}
+
+/* ---------- 3. 기본 초기화 ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 메뉴·버튼으로 섹션 이동할 때 부드럽게 스크롤 */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Cafe24Ssurround", "Malgun Gothic", sans-serif;
+  background-color: var(--color-white);
+}
+
+/* ---------- 4. 스크롤바 숨기기 ---------- */
+/* 스크롤은 그대로 되고, 오른쪽 스크롤바 모양만 안 보이게 합니다.
+   (스크롤바가 사라지므로 1920 화면에서 페이지가 1920px 꽉 차게 보입니다) */
+html {
+  scrollbar-width: none;        /* Firefox, 최신 Chrome/Edge */
+  -ms-overflow-style: none;     /* 예전 Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari, Whale 등 */
+}
+
+/* ---------- 5. 공통 요소 ---------- */
+img {
+  display: block;
+  max-width: none;
+}
+
+/* 섹션 안쪽 1920px 박스
+   - 섹션 배경은 창 폭에 꽉 차고, 내용은 이 박스 안에 Figma 좌표 그대로 배치합니다.
+   - 박스 안 요소는 position: absolute + left/top 에 Figma 의 x/y 값을 넣으면 됩니다. */
+.section__inner {
+  position: relative;
+  width: var(--page-width);
+  height: 100%;
+  margin: 0 auto;
+}
+
+/* 화면에는 안 보이고 스크린리더만 읽는 글자 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

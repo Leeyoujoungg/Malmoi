@@ -1,0 +1,197 @@
+/* =========================================================
+   section07-play-modes.css — 7. 네 가지 플레이
+   (Figma: 04 같은 숲, 네 가지 플레이, 1920 x 2222)
+   - 배경색은 main.css 에 있고(배경 없음 = 흰색), 여기에는 얹는 요소만 있습니다.
+   - 모든 요소는 .section__inner(1920px 박스) 안에서
+     position: absolute + Figma 의 x(left) / y(top) 값으로 배치합니다.
+   - 이미지: assets/images/section07-play-modes/
+   - 인터랙션은 아직 넣지 않았습니다.
+     (Figma 안내 문구대로 "카드에 마우스를 올리면 영상 재생"은 나중에 js 로 추가)
+   ========================================================= */
+
+.section--play-modes .section__inner > * {
+  position: absolute;
+  margin: 0;
+}
+
+
+/* ---------- 1. 배경요소 ---------- */
+
+/* 오른쪽 노란 원 (오른쪽이 잘린 모양 그대로 이미지로 받음, 카드 뒤에 깔림) */
+.modes__circle-right { left: 1621.9px; top: 1249.9px; width: 299px; height: 581px; }
+
+/* 왼쪽 파란 반짝이, 오른쪽 분홍 하트 (이미지에 기울기 포함) */
+.modes__sparkle { left: 245.6px;  top: 257.8px; width: 52px; height: 52px; }
+.modes__heart   { left: 1622.8px; top: 189px;   width: 69px; height: 65px; }
+
+/* 제목 "네 가지 플레이" 아래 노란 형광펜 */
+.modes__highlight {
+  left: 871px;
+  top: 226px;
+  width: 462px;
+  height: 14px;
+  border-radius: 7px;
+  background-color: rgba(255, 233, 74, 0.8);
+}
+
+
+/* ---------- 2. 제목, 설명, 안내 배지 (가운데 정렬) ---------- */
+.modes__title {
+  left: 960px;
+  top: 160px;
+  transform: translateX(-50%);
+  font-family: var(--font-jua);
+  font-size: 80px;
+  font-weight: normal;
+  line-height: 1.22;
+  color: var(--color-navy);
+  white-space: nowrap;
+}
+
+.modes__desc {
+  left: 960px;
+  top: 282px;
+  transform: translateX(-50%);
+  font-family: var(--font-noto);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(27, 26, 122, 0.85);
+  white-space: nowrap;
+}
+
+/* "Hover 카드에 마우스를 올리면…" 점선 배지 */
+.modes__hint {
+  left: 676.5px;
+  top: 348px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px 10px 20px;
+  border: 2px dashed var(--color-navy);
+  border-radius: 999px;
+  background-color: #fff6c9;
+  font-family: var(--font-noto);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px; /* 배지 높이 52px (Figma) */
+  color: var(--color-navy);
+  white-space: nowrap;
+}
+
+.modes__hint-tag {
+  font-family: var(--font-jua);
+  font-size: 22px;
+  font-weight: normal;
+  color: var(--color-hot-pink);
+}
+
+
+/* ---------- 3. 게임 카드 4개 ---------- */
+/* 카드 묶음 (Figma: grid, 1600 x 1562) */
+.modes__grid {
+  left: 160px;
+  top: 480px;
+  width: 1600px;
+  height: 1562px;
+}
+
+/* 카드별로 다른 것: 위치, 바탕색, 포인트 색(그림자·손동작 글자), 배지 색, 요정 위치 */
+.mode-card--pio  { left: 0;     top: 0;     --card-bg: #ffe3f3; --card-point: #ff3d8b; --card-pill: #ff9bea; }
+.mode-card--raon { left: 824px; top: 0;     --card-bg: #fff6c9; --card-point: #ffb800; --card-pill: #ffe04a; }
+.mode-card--ari  { left: 0;     top: 813px; --card-bg: #ddf7ff; --card-point: #19c8ff; --card-pill: #8fe9ff; }
+.mode-card--ruru { left: 824px; top: 813px; --card-bg: #e0ffe9; --card-point: #2ed67a; --card-pill: #9df5b0; }
+
+.mode-card {
+  position: absolute;
+  width: 776px;
+  height: 749px;
+  border: 4px solid var(--color-navy);
+  border-radius: 56px;
+  background-color: var(--card-bg);
+  box-shadow: 0 12px 0 0 var(--card-point);
+  color: var(--color-navy);
+}
+
+/* 카드 안 요소 위치는 테두리(4px) 안쪽 기준 = Figma 값 - 4px */
+
+/* 게임 화면 썸네일 (712 x 380, 남색 테두리) */
+.mode-card__thumb {
+  position: absolute;
+  left: 28px;
+  top: 28px;
+  width: 712px;
+  height: 380px;
+  object-fit: cover;
+  border: 4px solid var(--color-navy);
+  border-radius: 32px;
+}
+
+/* 글자 묶음 */
+.mode-card__text {
+  position: absolute;
+  left: 28px;
+  top: 436px;
+  width: 712px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 0 250px 0 8px;
+}
+
+/* 감정 배지 "희 · 기쁨" */
+.mode-card__pill {
+  padding: 6px 22px;
+  border: 3px solid var(--color-navy);
+  border-radius: 999px;
+  background-color: var(--card-pill);
+  font-family: var(--font-jua);
+  font-size: 24px;
+  line-height: 30px; /* 배지 높이 48px (Figma) */
+  white-space: nowrap;
+}
+
+.mode-card__name {
+  margin: 0;
+  font-family: var(--font-jua);
+  font-size: 46px;
+  font-weight: normal;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.mode-card__desc {
+  margin: 0;
+  font-family: var(--font-noto);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(27, 26, 122, 0.85);
+  white-space: nowrap;
+}
+
+/* 손동작 배지 "손동작 주먹 쥐기" */
+.mode-card__gesture {
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  padding: 8px 22px 8px 18px;
+  border-radius: 999px;
+  background-color: #ffffff;
+  font-family: var(--font-jua);
+  font-size: 22px;
+  white-space: nowrap;
+}
+.mode-card__gesture-label { color: var(--card-point); }
+
+/* 오른쪽 아래 요정 (높이 288px, 카드 아래로 살짝 튀어나옴) */
+.mode-card__fairy {
+  position: absolute;
+  top: 477px;
+  height: 288px;
+}
+.mode-card--pio  .mode-card__fairy { left: 503.8px; width: 252.2px; }
+.mode-card--raon .mode-card__fairy { left: 553.2px; width: 202.8px; }
+.mode-card--ari  .mode-card__fairy { left: 542.2px; width: 213.8px; }
+.mode-card--ruru .mode-card__fairy { left: 520.3px; width: 235.7px; }

@@ -1,0 +1,178 @@
+/* =========================================================
+   section08-making.css — 8. 제작 과정 (화면 고정 + 4단계)
+   (Figma: 06 말모이가 만들어지기까지 step 01 ~ 04, 1920 x 1080)
+   - 배경색·고정(sticky)은 main.css, 단계 계산은 js/main.js 에 있습니다.
+     js 가 섹션에 data-step="1~4" 를 붙이면, 여기 CSS 가 그 단계의 요소만 보여줍니다.
+   - 단계마다 바뀌는 것: 배경색(main.css), 큰 노란 원, 왼쪽 그림 카드, 오른쪽 step 카드
+   - 모든 단계에 똑같이 있는 것: 라벨, 제목, 형광펜, 본문, 기획서 배지, 모이, 작은 원 2개
+   - 이미지: assets/images/section08-making/
+   ========================================================= */
+
+.section--making .section__inner {
+  overflow: hidden; /* 고정된 동안 원이 위·아래 섹션으로 삐져나오지 않게 */
+}
+
+.section--making .section__inner > * {
+  position: absolute;
+  margin: 0;
+}
+
+
+/* ---------- 1. 단계별 보이기 / 숨기기 ---------- */
+/* 기본은 숨기고, 섹션의 data-step 과 번호가 같은 것만 보여줌 */
+.making-step,
+.making-image,
+.making__circle-big {
+  display: none;
+}
+
+.section--making[data-step="1"] .making-step--1,
+.section--making[data-step="2"] .making-step--2,
+.section--making[data-step="3"] .making-step--3,
+.section--making[data-step="4"] .making-step--4,
+.section--making[data-step="1"] .making-image--1,
+.section--making[data-step="2"] .making-image--2,
+.section--making[data-step="3"] .making-image--3,
+.section--making[data-step="4"] .making-image--4,
+.section--making[data-step="1"] .making__circle-big--step1,
+.section--making[data-step="2"] .making__circle-big--step2-4,
+.section--making[data-step="3"] .making__circle-big--step2-4,
+.section--making[data-step="4"] .making__circle-big--step2-4 {
+  display: block;
+}
+
+
+/* ---------- 2. 배경요소 ---------- */
+
+/* 큰 노란 원 — step 1 용 / step 2~4 용 (위·왼쪽 밖으로 나간 부분은 잘림) */
+.making__circle-big--step1   { left: -180px; top: -90.2px; width: 609px; height: 609px; }
+.making__circle-big--step2-4 { left: -185px; top: -95px;   width: 608px; height: 608px; }
+
+/* 모든 단계 공통: 그림 카드 오른쪽 아래 작은 원, 오른쪽 아래 원 */
+.making__circle-small        { left: 711.4px;  top: 675.4px; width: 185px; height: 185px; }
+.making__circle-bottom-right { left: 1667.9px; top: 882.9px; width: 376px; height: 376px; }
+
+/* 제목 아래 노란 형광펜 */
+.making__highlight {
+  left: 962px;
+  top: 426px;
+  width: 622px;
+  height: 14px;
+  border-radius: 7px;
+  background-color: rgba(255, 233, 74, 0.8);
+}
+
+
+/* ---------- 3. 라벨, 제목, 본문, 기획서 배지 ---------- */
+.making__eyebrow {
+  left: 970px;
+  top: 306px;
+  height: 46px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background-color: var(--color-navy);
+  font-family: var(--font-title);
+  font-size: 20px;
+  line-height: 46px;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+/* "말모이 기획서 보러가기→" (분홍 바탕 + 테두리 + 그림자는 plan-link-bg.png) */
+.making__plan-link {
+  left: 1112.9px;
+  top: 306px;
+  width: 285px;
+  height: 48px; /* 배지 46px + 그림자 2px */
+  padding-bottom: 2px;
+  background: url("../assets/images/section08-making/plan-link-bg.png") no-repeat top left / 100% 100%;
+  font-family: var(--font-title);
+  font-size: 20px;
+  line-height: 46px;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.making__title {
+  left: 970px;
+  top: 376px;
+  font-family: var(--font-title);
+  font-size: 56px;
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--color-navy);
+  white-space: nowrap;
+}
+
+.making__body {
+  left: 970px;
+  top: 470px;
+  width: 713px;
+  font-family: var(--font-pretendard);
+  font-size: 26px;
+  line-height: 43px;
+  letter-spacing: 0.26px;
+  color: var(--color-navy);
+}
+
+/* 모이 캐릭터 */
+.making__moi { left: 1642px; top: 659px; width: 162px; height: 182px; }
+
+
+/* ---------- 4. 왼쪽 그림 카드 ---------- */
+.making-image { left: 143px; top: 317px; width: 672px; height: 496px; }
+
+
+/* ---------- 5. 오른쪽 step 카드 ---------- */
+/* 단계별로 다른 것: 포인트 색 (그림자, 번호 동그라미) */
+.making-step--1 { --step-point: #ff3d8b; }
+.making-step--2 { --step-point: #ffb800; }
+.making-step--3 { --step-point: #19c8ff; }
+.making-step--4 { --step-point: #2ed67a; }
+
+.making-step {
+  left: 970px;
+  top: 602px;
+  width: 770px;
+  padding: 22px 24px 24px;
+  border: 3px solid var(--color-navy);
+  border-radius: 28px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 0 0 var(--step-point);
+  color: var(--color-navy);
+}
+
+/* 번호 동그라미 + 단계 제목 */
+.making-step__head {
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-jua);
+  font-size: 32px;
+  line-height: 44px;
+  white-space: nowrap;
+}
+
+.making-step__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 3px solid var(--color-navy);
+  border-radius: 999px;
+  background-color: var(--step-point);
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.making-step__desc {
+  margin: 0;
+  font-family: var(--font-pretendard);
+  font-size: 24px;
+  line-height: 1.6;
+  color: rgba(27, 26, 122, 0.85);
+}
+.making-step__desc strong { font-weight: 700; }

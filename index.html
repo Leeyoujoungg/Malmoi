@@ -4,22 +4,554 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>말모이</title>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-family: "Pretendard", "Malgun Gothic", sans-serif;
-      text-align: center;
-    }
-    h1 { font-size: 3rem; margin: 0 0 0.5rem; }
-    p { margin: 0; color: #666; }
-  </style>
+
+  <!-- 웹폰트: Jua, Noto Sans KR, Bagel Fat One (Google Fonts) / Pretendard (CDN) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+  <!-- 공통 스타일 (폰트, 색상 변수, 초기화) -->
+  <link rel="stylesheet" href="css/base.css">
+  <!-- 메인 페이지 섹션 배경 (Figma: Frame 5907) — 확정, 수정 금지 -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- 섹션별 요소 (글자, 이미지, 배치) -->
+  <link rel="stylesheet" href="css/section01-hero.css">
+  <link rel="stylesheet" href="css/section02-story.css">
+  <link rel="stylesheet" href="css/section03-why-rhythm.css">
+  <link rel="stylesheet" href="css/section04-world.css">
+  <link rel="stylesheet" href="css/section05-fairies.css">
+  <link rel="stylesheet" href="css/section06-how-to-play.css">
+  <link rel="stylesheet" href="css/section07-play-modes.css">
+  <link rel="stylesheet" href="css/section08-making.css">
+  <link rel="stylesheet" href="css/section09-team.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <!-- 메뉴, 버튼 (클릭하면 섹션 이동) -->
+  <link rel="stylesheet" href="css/gnb.css">
+  <link rel="stylesheet" href="css/floating-buttons.css">
 </head>
 <body>
-  <h1>말모이</h1>
+
+  <!-- 메인 페이지 전체 (Figma: Frame 5907, 1920 x 12473) -->
+  <div class="page">
+
+    <!-- 1. 첫 화면 (Frame 5906) — 스타일: css/section01-hero.css
+         요소 순서 = Figma 레이어 순서 (아래에 쓴 것이 위에 겹쳐 보임) -->
+    <section class="section section--hero" id="hero">
+      <div class="section__inner">
+
+        <!-- 배경요소: 캐릭터 뒤 점무늬, 노란 형광펜, 반짝이, 빛줄기, 장식 원 -->
+        <img class="hero__char-dots" src="assets/images/section01-hero/char-dots.png" alt="">
+        <span class="hero__highlight"></span>
+        <img class="hero__sparkle hero__sparkle--right" src="assets/images/section01-hero/sparkle-right.png" alt="">
+        <img class="hero__light hero__light--left" src="assets/images/section01-hero/light-left.png" alt="">
+        <img class="hero__light hero__light--right" src="assets/images/section01-hero/light-right.png" alt="">
+        <img class="hero__circle hero__circle--top-left" src="assets/images/section01-hero/circle-top-left.png" alt="">
+        <img class="hero__circle hero__circle--top-right" src="assets/images/section01-hero/circle-top-right.png" alt="">
+        <img class="hero__circle hero__circle--mid-right" src="assets/images/section01-hero/circle-mid-right.png" alt="">
+        <img class="hero__circle hero__circle--mid-left" src="assets/images/section01-hero/circle-mid-left.png" alt="">
+
+        <!-- 글자: 라벨, 제목, 설명 -->
+        <p class="hero__eyebrow">리듬게임으로 감정의 말을 찾는 전시</p>
+        <h1 class="hero__title">감정의 말들을 모아,<br>감정의 숲을 함께 채워나가다</h1>
+        <p class="hero__lead">분명히 느꼈지만 이름 붙이기 어려웠던 마음.<br>리듬게임을 통해 감정의 말을 찾고, 마음에 남은 단어를 감정 나무에 걸어보세요.</p>
+
+        <!-- 캐릭터 4명 (희 · 노 · 애 · 락) -->
+        <img class="hero__char hero__char--hee" src="assets/images/section01-hero/char-hee.png" alt="기쁨의 요정 피오">
+        <img class="hero__char hero__char--no" src="assets/images/section01-hero/char-no.png" alt="분노의 요정 라온">
+        <img class="hero__char hero__char--ae" src="assets/images/section01-hero/char-ae.png" alt="슬픔의 요정 아리">
+        <img class="hero__char hero__char--rock" src="assets/images/section01-hero/char-rock.png" alt="즐거움의 요정 루루">
+
+        <!-- 배경요소: 반짝이(왼쪽), 아래쪽 장식 원 -->
+        <img class="hero__sparkle hero__sparkle--left" src="assets/images/section01-hero/sparkle-left.png" alt="">
+        <img class="hero__circle hero__circle--bottom-right" src="assets/images/section01-hero/circle-bottom-right.png" alt="">
+        <img class="hero__circle hero__circle--bottom-left" src="assets/images/section01-hero/circle-bottom-left.png" alt="">
+
+        <!-- 스크롤 안내 (버튼 모양이지만 동작 없음) -->
+        <p class="hero__scroll-hint">아래로 내려 말모이의 이야기를 만나보세요</p>
+
+        <!-- 감정 단어 칩 5개 (이미지 안에 글자 포함) -->
+        <img class="hero__word hero__word--heunyeon" src="assets/images/section01-hero/word-heunyeonhada.png" alt="흔연하다">
+        <img class="hero__word hero__word--chungman" src="assets/images/section01-hero/word-chungmanhada.png" alt="충만하다">
+        <img class="hero__word hero__word--hwanghol" src="assets/images/section01-hero/word-hwangholhada.png" alt="황홀하다">
+        <img class="hero__word hero__word--hwanhui" src="assets/images/section01-hero/word-hwanhuiropda.png" alt="환희롭다">
+        <img class="hero__word hero__word--gomu" src="assets/images/section01-hero/word-gomudoeda.png" alt="고무되다">
+
+        <!-- 상단 메뉴 (GNB) — 첫 화면 Figma 위치에 고정. 스타일: css/gnb.css
+             href 의 #아이디 = 누르면 이동할 섹션의 id -->
+        <header class="gnb">
+          <a class="gnb__logo-link" href="#hero"><img class="gnb__logo" src="assets/images/common/logo.png" alt="말모이 (맨 위로)"></a>
+          <nav class="gnb__menu">
+            <a class="gnb__item" href="#story">말모이 이야기</a>
+            <a class="gnb__item" href="#world">세계관 안내</a>
+            <a class="gnb__item" href="#making">제작 과정</a>
+            <a class="gnb__item" href="#team">팀 소개</a>
+          </nav>
+        </header>
+
+      </div>
+    </section>
+
+    <!-- 2. 말모이 이야기 (02 그 많은 말들은 어디로 갔을까요?) — 스타일: css/section02-story.css -->
+    <section class="section section--story" id="story">
+      <div class="section__inner">
+
+        <!-- 배경요소: 음표, 노란 형광펜 -->
+        <img class="story__music-note" src="assets/images/section02-story/music-note.png" alt="">
+        <span class="story__highlight"></span>
+
+        <!-- 단어 나무 + 감정 칩 4개 -->
+        <img class="story__tree" src="assets/images/section02-story/word-tree.png" alt="감정 단어가 열린 픽셀 나무">
+        <span class="story__chip story__chip--joy">기쁘다</span>
+        <span class="story__chip story__chip--anger">화난다</span>
+        <span class="story__chip story__chip--sad">슬프다</span>
+        <span class="story__chip story__chip--fun">즐겁다</span>
+
+        <!-- 본문 -->
+        <p class="story__body">자주 쓰는 단어로는 표현하기 어려운 감정이 있습니다.<br>알맞은 단어가 떠오르지 않거나, 아는 단어도 설명하기 어렵습니다.</p>
+
+        <!-- 강조 박스 -->
+        <p class="story__textbox">말모이는 익숙한 표현 너머의 감정 단어를 다시 만나는 작품입니다.<br>막연했던 마음에 조금 더 가까운 말을 찾아보세요.</p>
+
+        <!-- 배경요소: 반짝이, 점선 빈 단어 2개, 픽셀 조각 -->
+        <img class="story__sparkle" src="assets/images/section02-story/sparkle-pink.png" alt="">
+        <img class="story__ghost story__ghost--1" src="assets/images/section02-story/ghost-word-1.png" alt="">
+        <img class="story__ghost story__ghost--2" src="assets/images/section02-story/ghost-word-2.png" alt="">
+        <span class="story__pixel story__pixel--1"></span>
+        <span class="story__pixel story__pixel--2"></span>
+        <span class="story__pixel story__pixel--3"></span>
+
+        <!-- 제목 -->
+        <h2 class="story__title">그 많은 말들은 어디로 갔을까요?</h2>
+        <span class="story__pixel story__pixel--4"></span>
+        <p class="story__eyebrow">말모이 이야기</p>
+
+        <!-- 배경요소: 첫 화면 오른쪽 아래 원이 이어져 내려온 부분 -->
+        <div class="story__circle-clip">
+          <img src="assets/images/section02-story/circle-top-right.svg" alt="">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. 리듬게임 이유 (03 왜 리듬에 맞춰 말을 골랐을까요?) — 스타일: css/section03-why-rhythm.css -->
+    <section class="section section--why-rhythm">
+      <div class="section__inner">
+
+        <!-- 배경요소: 오른쪽 아래 큰 원, 형광펜, 왼쪽 위 작은 원 -->
+        <div class="why__clip why__clip--bottom-right">
+          <img src="assets/images/section03-why-rhythm/circle-bottom-right.png" alt="">
+        </div>
+        <span class="why__highlight"></span>
+        <div class="why__clip why__clip--top-left">
+          <img src="assets/images/section03-why-rhythm/circle-top-left-small.svg" alt="">
+        </div>
+
+        <!-- 배경요소: 반짝이, 음표 -->
+        <img class="why__sparkle" src="assets/images/section03-why-rhythm/sparkle-pink.png" alt="">
+        <img class="why__music-note" src="assets/images/section03-why-rhythm/music-note.png" alt="">
+
+        <!-- 카드 3개 -->
+        <article class="why-card why-card--1">
+          <div class="why-card__top">
+            <span class="why-card__icon"><img src="assets/images/section03-why-rhythm/icon-sound.svg" alt=""></span>
+            <span class="why-card__num">01</span>
+            <span class="why-card__phase">플레이 중</span>
+          </div>
+          <h3 class="why-card__title">새로운 단어와의 만남</h3>
+          <p class="why-card__desc">상황에 어울리는 단어가 박자마다 등장합니다.<br>고르면서 낯선 감정 표현에 주목합니다.</p>
+          <div class="why-card__source">
+            <p class="why-card__evidence">근거 · 눈에 띄는 단어일수록 더 잘 습득되고 기억됐습니다</p>
+            <a class="why-card__link" href="https://www.cambridge.org/core/journals/recall/article/factors-affecting-incidental-l2-vocabulary-acquisition-and-retention-in-a-gameenhanced-learning-environment/429D5D5AF1E567164C49C70CE3DB05DC" target="_blank" rel="noopener">Lee, 2023 ↗</a>
+          </div>
+        </article>
+
+        <article class="why-card why-card--2">
+          <div class="why-card__top">
+            <span class="why-card__icon"><img src="assets/images/section03-why-rhythm/icon-hand.svg" alt=""></span>
+            <span class="why-card__num">02</span>
+            <span class="why-card__phase">플레이 중</span>
+          </div>
+          <h3 class="why-card__title">능동적인 참여</h3>
+          <p class="why-card__desc">다음 박을 기다렸다가 손동작으로 답하면 소리와<br>화면이 반응합니다. 지켜보는 대신 플레이합니다.</p>
+          <div class="why-card__source">
+            <p class="why-card__evidence">근거 · 게임 요소가 참여를 높였습니다</p>
+            <a class="why-card__link" href="https://link.springer.com/article/10.1007/s10648-019-09498-w" target="_blank" rel="noopener">Sailer &amp; Homner, 2020 ↗</a>
+          </div>
+        </article>
+
+        <article class="why-card why-card--3">
+          <div class="why-card__top">
+            <span class="why-card__icon"><img src="assets/images/section03-why-rhythm/icon-card.svg" alt=""></span>
+            <span class="why-card__num">03</span>
+            <span class="why-card__phase">결과 화면</span>
+          </div>
+          <h3 class="why-card__title">호기심에서 의미 발견으로</h3>
+          <p class="why-card__desc">궁금해진 단어의 뜻을 결과 화면에서 확인합니다.<br>궁금증이 생긴 직후 뜻을 만나도록 설계했습니다.</p>
+          <div class="why-card__source">
+            <p class="why-card__evidence">근거 · 호기심이 높을 때 접한 정보는 이후 더 잘 기억됐습니다</p>
+            <a class="why-card__link" href="https://cell.com/neuron/retrieve/pii/S0896627314008046" target="_blank" rel="noopener">Gruber et al., 2014 ↗</a>
+          </div>
+        </article>
+
+        <!-- 제목, 설명 -->
+        <h2 class="why__title">왜 리듬에 맞춰 말을 골랐을까요?</h2>
+        <p class="why__lead">평소 쓰지 않던 감정 단어를 놀이 속에서 자연스럽게 만나게 하고 싶었습니다.<br>박자에 맞춰 말을 고르고 손동작에 즉각 반응하는 리듬게임은 <strong class="why__em why__em--pink">단어에 주목하고</strong><strong>, </strong><strong class="why__em why__em--blue">직접 참여하며</strong><strong>, </strong><strong class="why__em why__em--green">궁금해진 뜻을 찾는</strong> 데 적합했습니다.</p>
+
+        <!-- 배경요소: 02 섹션과의 경계에 걸친 왼쪽 원 (위쪽 84.5px 는 02 섹션 위로 올라감) -->
+        <img class="why__circle-boundary" src="assets/images/section03-why-rhythm/circle-top-left-large.png" alt="">
+
+      </div>
+    </section>
+
+    <!-- 4. 세계관 안내 (04 세계관 안내) — 스타일: css/section04-world.css -->
+    <section class="section section--world" id="world">
+      <div class="section__inner">
+
+        <!-- 배경요소: 오른쪽 위 노란 원, 왼쪽 아래 분홍 원 -->
+        <div class="world__circle-clip">
+          <img src="assets/images/section04-world/circle-top-right.svg" alt="">
+        </div>
+        <img class="world__circle-bottom-left" src="assets/images/section04-world/circle-bottom-left.png" alt="">
+
+        <!-- 세계관 영상 (Figma 에서 영상 채우기) — 소리 없이 자동 재생, 반복 -->
+        <div class="world__video">
+          <video src="assets/videos/world-intro.mp4" autoplay muted loop playsinline></video>
+        </div>
+
+        <!-- 영상 아래 설명 -->
+        <p class="world__desc">말모이의 숲에선 말이 씨앗이 되어 나무에 모이고, 잊힐수록 나무는 생기를 잃습니다.<br>모이와 희·노·애·락 요정들과 함께 새로운 감정의 말을 찾아보세요.</p>
+
+        <!-- 배경요소: 반짝이 2개, 노란 형광펜 -->
+        <img class="world__sparkle world__sparkle--left" src="assets/images/section04-world/sparkle-left.png" alt="">
+        <img class="world__sparkle world__sparkle--right" src="assets/images/section04-world/sparkle-right.png" alt="">
+        <span class="world__highlight"></span>
+
+        <!-- 라벨 + 제목 -->
+        <p class="world__eyebrow">세계관 안내</p>
+        <h2 class="world__title">말이 모여 자라는 숲</h2>
+
+      </div>
+    </section>
+
+    <!-- 5. 네 가지 감정 (05 네 가지 감정, 서로 다른 마음의 모습) — 스타일: css/section05-fairies.css -->
+    <section class="section section--fairies">
+      <div class="section__inner">
+
+        <!-- 배경요소: 오른쪽 하늘색 원 (Figma 에서 섹션 바깥 레이어) -->
+        <img class="fairies__circle-blue" src="assets/images/section05-fairies/circle-blue-right.png" alt="">
+
+        <!-- 설명 -->
+        <p class="fairies__desc">게임에서 만난 요정들은 저마다 다른 감정의 풍경을 가지고 있습니다.<br>체험한 요정도, 아직 만나지 못한 요정도 천천히 살펴보세요.</p>
+
+        <!-- 요정 카드 4개 -->
+        <article class="fairy-card fairy-card--pio">
+          <img class="fairy-card__circle" src="assets/images/section05-fairies/card-circle-pio.svg" alt="">
+          <img class="fairy-card__img" src="assets/images/section05-fairies/fairy-pio.png" alt="">
+          <h3 class="fairy-card__name">피오 · 희</h3>
+          <p class="fairy-card__role">기쁨의 요정</p>
+        </article>
+
+        <article class="fairy-card fairy-card--raon">
+          <img class="fairy-card__circle" src="assets/images/section05-fairies/card-circle-raon.svg" alt="">
+          <img class="fairy-card__img" src="assets/images/section05-fairies/fairy-raon.png" alt="">
+          <h3 class="fairy-card__name">라온 · 노</h3>
+          <p class="fairy-card__role">분노의 요정</p>
+        </article>
+
+        <article class="fairy-card fairy-card--ari">
+          <img class="fairy-card__circle" src="assets/images/section05-fairies/card-circle-ari.svg" alt="">
+          <img class="fairy-card__img" src="assets/images/section05-fairies/fairy-ari.png" alt="">
+          <h3 class="fairy-card__name">아리 · 애</h3>
+          <p class="fairy-card__role">슬픔의 요정</p>
+        </article>
+
+        <article class="fairy-card fairy-card--ruru">
+          <img class="fairy-card__circle" src="assets/images/section05-fairies/card-circle-ruru.svg" alt="">
+          <img class="fairy-card__img" src="assets/images/section05-fairies/fairy-ruru.png" alt="">
+          <h3 class="fairy-card__name">루루 · 락</h3>
+          <p class="fairy-card__role">즐거움의 요정</p>
+        </article>
+
+        <!-- 배경요소: 반짝이, 하트, 노란 형광펜 -->
+        <img class="fairies__sparkle" src="assets/images/section05-fairies/sparkle-green.png" alt="">
+        <img class="fairies__heart" src="assets/images/section05-fairies/heart-pink.png" alt="">
+        <span class="fairies__highlight"></span>
+
+        <!-- 제목 -->
+        <h2 class="fairies__title">4가지 감정,<br>서로 다른 마음의 모습</h2>
+
+        <!-- 배경요소: 왼쪽 아래 노란 원 (다음 섹션에 가려지고 위쪽 일부만 보임) -->
+        <img class="fairies__circle-bottom-left" src="assets/images/section05-fairies/circle-bottom-left.png" alt="">
+
+      </div>
+    </section>
+
+    <!-- 6. 플레이 방법 (Frame 5904) — 스타일: css/section06-how-to-play.css -->
+    <section class="section section--how-to-play">
+      <div class="section__inner">
+
+        <!-- 배경요소: 오른쪽 분홍 원, 왼쪽 위 노란 원 -->
+        <img class="play__circle-right" src="assets/images/section06-how-to-play/circle-right.png" alt="">
+        <img class="play__circle-top-left" src="assets/images/section06-how-to-play/circle-top-left.png" alt="">
+
+        <!-- 단계 카드 3개 -->
+        <article class="play-card play-card--1">
+          <img class="play-card__img" src="assets/images/section06-how-to-play/step1-select-fairy.jpg" alt="요정 선택 화면">
+          <div class="play-card__text">
+            <div class="play-card__head">
+              <span class="play-card__num">01</span>
+              <h3 class="play-card__title">요정 선택</h3>
+            </div>
+            <p class="play-card__desc">화면에서 체험할 요정을 고릅니다.</p>
+          </div>
+        </article>
+
+        <article class="play-card play-card--2">
+          <img class="play-card__img" src="assets/images/section06-how-to-play/step2-play-game.jpg" alt="게임 플레이 화면">
+          <div class="play-card__text">
+            <div class="play-card__head">
+              <span class="play-card__num">02</span>
+              <h3 class="play-card__title">게임 참여</h3>
+            </div>
+            <p class="play-card__desc">상황에 맞는 단어에 손동작으로 응답합니다.</p>
+          </div>
+        </article>
+
+        <article class="play-card play-card--3">
+          <img class="play-card__img" src="assets/images/section06-how-to-play/step3-check-meaning.jpg" alt="단어 뜻 확인 화면">
+          <div class="play-card__text">
+            <div class="play-card__head">
+              <span class="play-card__num">03</span>
+              <h3 class="play-card__title">뜻 확인</h3>
+            </div>
+            <p class="play-card__desc">게임에서 만난 단어의 뜻을 살펴봅니다.</p>
+          </div>
+        </article>
+
+        <!-- 게임 흐름 바 -->
+        <div class="play-flow">
+          <span class="play-flow__chip play-flow__chip--sound"><img src="assets/images/section06-how-to-play/icon-sound.svg" alt="">신호음을 들어요</span>
+          <span class="play-flow__arrow">→</span>
+          <span class="play-flow__chip play-flow__chip--hand"><img src="assets/images/section06-how-to-play/icon-hand.svg" alt="">손동작으로 답해요</span>
+          <span class="play-flow__arrow">→</span>
+          <span class="play-flow__chip play-flow__chip--card"><img src="assets/images/section06-how-to-play/icon-card.svg" alt="">게임 화면이 반응해요</span>
+        </div>
+
+        <!-- 설명, 형광펜, 배경요소(별, 음표), 제목 -->
+        <p class="play__desc">요정마다 서로 다른 동작으로 참여해요.<br>음악과 신호음을 듣고 정해진 박자에 응답해 보세요.</p>
+        <span class="play__highlight"></span>
+        <img class="play__star" src="assets/images/section06-how-to-play/star-blue.png" alt="">
+        <img class="play__music-note" src="assets/images/section06-how-to-play/music-note.png" alt="">
+        <h2 class="play__title">요정 하나를 고르고, 박자에 맞춰 참여해요</h2>
+
+        <!-- 배경요소: 왼쪽 아래 하늘색 원 (Figma 에서 섹션 바깥 레이어, 아래 섹션까지 이어짐) -->
+        <img class="play__circle-bottom-left" src="assets/images/section06-how-to-play/circle-bottom-left.png" alt="">
+
+      </div>
+    </section>
+
+    <!-- 7. 네 가지 플레이 (04 같은 숲, 네 가지 플레이) — 스타일: css/section07-play-modes.css -->
+    <section class="section section--play-modes" id="play-modes">
+      <div class="section__inner">
+
+        <!-- 배경요소: 오른쪽 노란 원 (Figma 에서 섹션 바깥 레이어, 카드 뒤에 깔림) -->
+        <img class="modes__circle-right" src="assets/images/section07-play-modes/circle-right.png" alt="">
+
+        <!-- 배경요소: 반짝이, 하트 -->
+        <img class="modes__sparkle" src="assets/images/section07-play-modes/sparkle-blue.png" alt="">
+        <img class="modes__heart" src="assets/images/section07-play-modes/heart-pink.png" alt="">
+
+        <!-- 설명 + 안내 배지 -->
+        <p class="modes__desc">전시장에서는 이 중 한 게임을 골라 체험해요.</p>
+        <p class="modes__hint"><span class="modes__hint-tag">Hover</span>카드에 마우스를 올리면 요정별 인게임 영상이 재생돼요</p>
+
+        <!-- 게임 카드 4개 (2 x 2) -->
+        <div class="modes__grid">
+
+          <article class="mode-card mode-card--pio">
+            <img class="mode-card__thumb" src="assets/images/section07-play-modes/game-pio.jpg" alt="피오 게임 화면">
+            <div class="mode-card__text">
+              <span class="mode-card__pill">희 · 기쁨</span>
+              <h3 class="mode-card__name">피오 · 밤하늘의 폭죽</h3>
+              <p class="mode-card__desc">주먹을 쥐어 폭죽을 터뜨려요.</p>
+              <p class="mode-card__gesture"><span class="mode-card__gesture-label">손동작</span>주먹 쥐기</p>
+            </div>
+            <img class="mode-card__fairy" src="assets/images/section07-play-modes/fairy-pio.png" alt="">
+          </article>
+
+          <article class="mode-card mode-card--raon">
+            <img class="mode-card__thumb" src="assets/images/section07-play-modes/game-raon.jpg" alt="라온 게임 화면">
+            <div class="mode-card__text">
+              <span class="mode-card__pill">노 · 분노</span>
+              <h3 class="mode-card__name">라온 · 도장의 송판 격파</h3>
+              <p class="mode-card__desc">주먹을 쥐어 알맞은 송판을 격파해요.</p>
+              <p class="mode-card__gesture"><span class="mode-card__gesture-label">손동작</span>주먹 쥐기</p>
+            </div>
+            <img class="mode-card__fairy" src="assets/images/section07-play-modes/fairy-raon.png" alt="">
+          </article>
+
+          <article class="mode-card mode-card--ari">
+            <img class="mode-card__thumb" src="assets/images/section07-play-modes/game-ari.jpg" alt="아리 게임 화면">
+            <div class="mode-card__text">
+              <span class="mode-card__pill">애 · 슬픔</span>
+              <h3 class="mode-card__name">아리 · 비 오는 거리</h3>
+              <p class="mode-card__desc">주먹을 쥐어 우산을 움직여요.</p>
+              <p class="mode-card__gesture"><span class="mode-card__gesture-label">손동작</span>주먹 쥐기</p>
+            </div>
+            <img class="mode-card__fairy" src="assets/images/section07-play-modes/fairy-ari.png" alt="">
+          </article>
+
+          <article class="mode-card mode-card--ruru">
+            <img class="mode-card__thumb" src="assets/images/section07-play-modes/game-ruru.jpg" alt="루루 게임 화면">
+            <div class="mode-card__text">
+              <span class="mode-card__pill">락 · 즐거움</span>
+              <h3 class="mode-card__name">루루 · 공연장의 슬로건</h3>
+              <p class="mode-card__desc">주먹을 쥐어 알맞은 슬로건을 골라요.</p>
+              <p class="mode-card__gesture"><span class="mode-card__gesture-label">손동작</span>주먹 쥐기</p>
+            </div>
+            <img class="mode-card__fairy" src="assets/images/section07-play-modes/fairy-ruru.png" alt="">
+          </article>
+
+        </div>
+
+        <!-- 형광펜 + 제목 -->
+        <span class="modes__highlight"></span>
+        <h2 class="modes__title">같은 숲, 네 가지 플레이</h2>
+
+      </div>
+    </section>
+
+    <!-- 8. 제작 과정 (06 말모이가 만들어지기까지)
+         making-scroll: 스크롤 길이를 만들어 주는 바깥 틀
+         section--making: 화면에 고정된 채 step 1~4 로 배경이 바뀌는 섹션 -->
+    <div class="making-scroll" id="making">
+      <section class="section section--making" data-step="1">
+        <div class="section__inner">
+
+          <!-- 배경요소: 큰 노란 원 (step 1 과 step 2~4 가 서로 다른 이미지) -->
+          <img class="making__circle-big making__circle-big--step1" src="assets/images/section08-making/circle-big-step1.png" alt="">
+          <img class="making__circle-big making__circle-big--step2-4" src="assets/images/section08-making/circle-big-step2-4.png" alt="">
+
+          <!-- 배경요소: 모든 step 에 공통으로 보이는 원 2개 -->
+          <img class="making__circle-small" src="assets/images/section08-making/circle-small-center.png" alt="">
+          <img class="making__circle-bottom-right" src="assets/images/section08-making/circle-bottom-right.png" alt="">
+
+          <!-- step 카드 4개 (data-step 에 맞는 것 하나만 보임) -->
+          <div class="making-step making-step--1">
+            <p class="making-step__head"><span class="making-step__num">01</span>질문에서 시작한 기획</p>
+            <p class="making-step__desc">설문과 연구 조사를 통해 <strong>감정에 맞는 말을<br>찾기 어려운 순간</strong>에 주목했습니다.</p>
+          </div>
+          <div class="making-step making-step--2">
+            <p class="making-step__head"><span class="making-step__num">02</span>네 감정의 모습 만들기</p>
+            <p class="making-step__desc">희·노·애·락의 특징을 <strong>캐릭터와 공간,<br>서로 다른 화면과 동작</strong>으로 표현했습니다.</p>
+          </div>
+          <div class="making-step making-step--3">
+            <p class="making-step__head"><span class="making-step__num">03</span>움직이며 다듬은 게임</p>
+            <p class="making-step__desc">손 인식 장비와 입력 방식을 비교해,<br><strong>탐색과 선택을 구분</strong>했습니다.</p>
+          </div>
+          <div class="making-step making-step--4">
+            <p class="making-step__head"><span class="making-step__num">04</span>공간으로 이어진 체험</p>
+            <p class="making-step__desc">게임과 벽면 비주얼, 실물 나무를 연결해<br><strong>발견한 말을 함께 남기도록</strong> 구성했습니다.</p>
+          </div>
+
+          <!-- 형광펜, 본문 -->
+          <span class="making__highlight"></span>
+          <p class="making__body">어떤 말을 만나게 할지 고민하고, 직접 움직여 보며 다듬었습니다.<br>기획과 디자인, 개발이 함께 이어온 과정을 소개합니다.</p>
+
+          <!-- 기획서 링크 모양 배지 (동작 없음) -->
+          <p class="making__plan-link">말모이 기획서 보러가기→</p>
+
+          <!-- 모이 캐릭터 -->
+          <img class="making__moi" src="assets/images/section08-making/moi.png" alt="모이">
+
+          <!-- 왼쪽 그림 카드 4장 (data-step 에 맞는 것 하나만 보임, "01 / 04" 표시는 이미지에 포함) -->
+          <img class="making-image making-image--1" src="assets/images/section08-making/step1-image.png" alt="1단계: 질문에서 시작한 기획">
+          <img class="making-image making-image--2" src="assets/images/section08-making/step2-image.png" alt="2단계: 네 감정의 모습 만들기">
+          <img class="making-image making-image--3" src="assets/images/section08-making/step3-image.png" alt="3단계: 움직이며 다듬은 게임">
+          <img class="making-image making-image--4" src="assets/images/section08-making/step4-image.png" alt="4단계: 공간으로 이어진 체험">
+
+          <!-- 제목, 라벨 -->
+          <h2 class="making__title">말모이가 만들어지기까지</h2>
+          <p class="making__eyebrow">제작과정</p>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- 9. 팀 소개 — 스타일: css/section09-team.css -->
+    <section class="section section--team" id="team">
+      <div class="section__inner">
+
+        <!-- 단체 사진 -->
+        <img class="team__photo" src="assets/images/section09-team/team-photo.png" alt="Team OCTAVE 단체 사진">
+
+        <!-- 라벨 + 제목 -->
+        <p class="team__eyebrow">팀소개</p>
+        <h2 class="team__title">Team OCTAVE</h2>
+
+        <!-- 역할 카드 3개 -->
+        <div class="team-role team-role--plan">
+          <span class="team-role__chip">기획</span>
+          <p class="team-role__names">장윤희 · 민명혜</p>
+        </div>
+        <div class="team-role team-role--design">
+          <span class="team-role__chip">디자인</span>
+          <p class="team-role__names">조강희 · 임현아 · 고서현 · 최승진</p>
+        </div>
+        <div class="team-role team-role--dev">
+          <span class="team-role__chip">개발</span>
+          <p class="team-role__names">이유정 · 최송주</p>
+        </div>
+
+        <!-- 배경요소: 왼쪽 하늘색 원, 오른쪽 분홍 원, 하트, 반짝이 -->
+        <img class="team__circle-left" src="assets/images/section09-team/circle-left.png" alt="">
+        <img class="team__circle-right" src="assets/images/section09-team/circle-right.png" alt="">
+        <img class="team__heart" src="assets/images/section09-team/heart-pink.svg" alt="">
+        <img class="team__sparkle" src="assets/images/section09-team/sparkle-blue.svg" alt="">
+
+        <!-- 배경요소: 위 섹션(제작 과정) 오른쪽 아래 원이 이어져 내려온 부분 -->
+        <div class="team__circle-from-above">
+          <img src="assets/images/section08-making/circle-bottom-right.png" alt="">
+        </div>
+
+        <!-- 오른쪽 아래 버튼 2개 — 팀 소개 섹션 Figma 위치에 고정. 스타일: css/floating-buttons.css -->
+        <div class="floating-buttons">
+          <a class="floating-buttons__intro" href="experience.html">체험<br>소개</a>
+          <a class="floating-buttons__top" href="#hero"><img src="assets/images/common/btn-to-top.png" alt="맨 위로"></a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 10. 하단 푸터 (Footer) — 스타일: css/footer.css -->
+    <footer class="main-footer">
+      <div class="footer__inner">
+
+        <!-- 왼쪽: 로고 + 팀 이름 + 한 줄 소개 -->
+        <div class="footer__brand">
+          <img class="footer__logo" src="assets/images/common/logo.png" alt="말모이">
+          <div class="footer__brand-text">
+            <p class="footer__team">말모이 · Team OCTAVE</p>
+            <p class="footer__slogan">감정의 말을 모아, 감정의 숲을 채우다</p>
+          </div>
+        </div>
+
+        <!-- 오른쪽: 페이지 이동 메뉴 + 저작권 -->
+        <div class="footer__links">
+          <nav class="footer__menu">
+            <a class="footer__menu-item" href="index.html">말모이</a>
+            <a class="footer__menu-item" href="experience.html">체험소개</a>
+          </nav>
+          <p class="footer__copyright">© 2026 OCTAVE.</p>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- 메인 페이지 스크립트 -->
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,113 @@
+/* =========================================================
+   main.css — 메인 페이지 섹션 배경 (Figma: Frame 5907, 1920 x 12473)
+   - 지금은 각 섹션의 "크기"와 "배경색"만 들어가 있습니다.
+   - 글자, 버튼, 이미지, 장식 원 등 요소는 아직 넣지 않았습니다.
+   - 섹션 순서는 index.html 과 같고, 괄호 안은 Figma 레이어 이름입니다.
+   ========================================================= */
+
+/* ---------- 0. 페이지 틀 ---------- */
+/* Figma Frame 5907 의 기본 배경(흰색). 배경이 없는 섹션은 이 흰색이 보입니다.
+   폭을 1920px 로 고정하면 세로 스크롤바(약 17px) 때문에 화면보다 넓어져
+   가로 스크롤바가 생깁니다. 그래서 배경은 창 폭(100%)에 맞춰 꽉 채우고,
+   나중에 넣을 글자·이미지 같은 내용은 섹션 안에 1920px(--page-width) 박스를 만들어 넣으세요. */
+.page {
+  width: 100%;
+  overflow: clip; /* hidden 을 쓰면 제작 과정 섹션의 sticky 고정이 깨지므로 clip 사용 */
+  background-color: var(--color-white);
+}
+
+/* 모든 섹션 공통 */
+.section {
+  position: relative;
+  width: 100%;
+}
+
+/* ---------- 1. 첫 화면 (Frame 5906) ---------- */
+.section--hero {
+  height: 1484px;
+  background: linear-gradient(to bottom, var(--color-sky), var(--color-white));
+}
+
+/* ---------- 2. 말모이 이야기 (02 그 많은 말들은 어디로 갔을까요?) ---------- */
+/* Figma 에서 배경 없음 → 페이지 흰색 */
+.section--story {
+  height: 1080px;
+}
+
+/* ---------- 3. 리듬게임 이유 (03 왜 리듬에 맞춰 말을 골랐을까요?) ---------- */
+.section--why-rhythm {
+  height: 1080px;
+  background-color: var(--color-cream);
+}
+
+/* ---------- 4. 세계관 안내 (04 세계관 안내) ---------- */
+.section--world {
+  height: 1282px;
+  background: linear-gradient(to bottom, var(--color-white), var(--color-sky-soft));
+}
+
+/* ---------- 5. 네 가지 감정 (05 네 가지 감정, 서로 다른 마음의 모습) ---------- */
+/* Figma 에서 배경 없음 → 페이지 흰색 */
+.section--fairies {
+  height: 1278px;
+}
+
+/* ---------- 6. 플레이 방법 (Frame 5904) ---------- */
+.section--how-to-play {
+  height: 1291px;
+  background-color: var(--color-cream);
+}
+
+/* ---------- 7. 네 가지 플레이 (04 같은 숲, 네 가지 플레이) ---------- */
+/* Figma 에서 배경 없음 → 페이지 흰색 */
+.section--play-modes {
+  height: 2222px;
+}
+
+/* ---------- 8. 제작 과정 (Rectangle 1388 / 06 말모이가 만들어지기까지) ---------- */
+/* 동작 방식
+   - 섹션이 화면 맨 위에 닿으면 그 자리에 고정(sticky)됩니다.
+   - 고정된 동안 스크롤하면 배경색이 step 01 → 04 순서로 바뀌고,
+     step 04 가 끝나면 다시 아래로 스크롤됩니다.
+   - 어떤 step 인지는 js/main.js 가 data-step 속성(1~4)으로 붙여줍니다.
+   - 색만 바꾸고 싶으면 아래 data-step 블록만 고치면 됩니다.
+   - step 하나당 스크롤 길이는 --making-step-scroll 로 조절합니다.
+     (이 고정 구간 때문에 페이지 전체 높이는 Figma 보다 길어집니다) */
+
+/* 바깥 틀: 섹션 높이 + (step 수 - 1) x step 스크롤 길이 */
+.making-scroll {
+  --making-height: 1080px;
+  --making-step-scroll: 1080px;
+
+  position: relative;
+  height: calc(var(--making-height) + 3 * var(--making-step-scroll));
+  margin-top: 80px; /* Figma 에서 위 섹션과 80px 떨어져 있음 (그 사이는 흰색) */
+}
+
+/* 고정되는 섹션 */
+.section--making {
+  position: sticky;
+  top: 0;
+  height: var(--making-height);
+  background-color: var(--color-pink); /* 기본값 = step 01 */
+  transition: background-color 0.5s ease;
+}
+
+.section--making[data-step="1"] { background-color: var(--color-pink); }   /* #FFE3F3 */
+.section--making[data-step="2"] { background-color: var(--color-yellow); } /* #FFF6C9 */
+.section--making[data-step="3"] { background-color: var(--color-blue); }   /* #DDF7FF */
+.section--making[data-step="4"] { background-color: var(--color-green); }  /* #E1FFE7 */
+
+/* ---------- 9. 팀 소개 (Figma 이름: 04 세계관 안내, 내용은 팀 소개) ---------- */
+.section--team {
+  height: 1339px;
+  background: linear-gradient(to bottom, var(--color-white), var(--color-lemon));
+}
+
+/* ---------- 10. 하단 푸터 (Footer) ---------- */
+/* Figma 에서 위 섹션과 1px 떨어져 있음 */
+.main-footer {
+  height: 256px;
+  margin-top: 1px;
+  background-color: var(--color-footer);
+}

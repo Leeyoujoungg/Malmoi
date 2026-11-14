@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>말모이 · 체험소개</title>
+
+  <!-- 웹폰트: Jua, Noto Sans KR, Bagel Fat One (Google Fonts) / Pretendard (CDN) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Jua&family=Noto+Sans+KR:wght@400;500;700&family=Preahvihear&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+  <!-- 공통 스타일 (폰트, 색상 변수, 초기화) -->
+  <link rel="stylesheet" href="css/base.css">
+  <!-- 페이지 틀(.page, .section)과 푸터 배경 — 메인 페이지와 같이 씀 -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- 체험소개 페이지 섹션 배경 (Figma: 최종—체험소개) -->
+  <link rel="stylesheet" href="css/experience.css">
+  <!-- 섹션별 요소 (글자, 이미지, 배치) -->
+  <link rel="stylesheet" href="css/exp-section01-zones.css">
+  <link rel="stylesheet" href="css/exp-section02-word-record.css">
+  <!-- 공통 요소: 상단 메뉴, 오른쪽 아래 버튼, 푸터 -->
+  <link rel="stylesheet" href="css/gnb.css">
+  <link rel="stylesheet" href="css/floating-buttons.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+
+  <!-- 체험소개 페이지 전체 (Figma: 최종—체험소개, 1920 x 3724) -->
+  <div class="page">
+
+    <!-- 1. 체험 소개 (Figma: 전시 현장 — 구상도) — 스타일: css/exp-section01-zones.css
+         지금은 1단계(메인 체험 공간)가 선택된 모습으로 고정 -->
+    <section class="section section--exp-intro" id="experience">
+      <div class="section__inner">
+
+        <!-- 배경요소: 왼쪽 노란 원 -->
+        <img class="zones__circle-left" src="assets/images/exp-section01-zones/circle-left-yellow.png" alt="">
+
+        <!-- 전시장 동선 영역 (Figma: 01 전시 현장 — 동선 맵) -->
+        <div class="zones__area">
+          <!-- 배경요소: 오른쪽 하늘색 원 -->
+          <img class="zones__circle-right" src="assets/images/exp-section01-zones/circle-right-blue.png" alt="">
+
+          <!-- 전시 평면도 (1단계: 메인 체험 공간 강조) -->
+          <img class="zones__floor-plan" src="assets/images/exp-section01-zones/floor-plan-step1-main-zone.png" alt="전시장 평면도: 입구에서 메인 체험 공간, 기록 테이블, 감정 나무 순서로 이동">
+
+          <!-- 오른쪽 공간 안내 패널 -->
+          <div class="zones__panel">
+            <h3 class="zones__panel-title">전시장에서는<br>이렇게 움직여요</h3>
+
+            <div class="zone zone--1 zone--active">
+              <div class="zone__head">
+                <span class="zone__num">01</span>
+                <div class="zone__names">
+                  <p class="zone__name">메인 체험 공간</p>
+                  <p class="zone__name-en">Main Experience Zone</p>
+                </div>
+              </div>
+              <p class="zone__desc">요정을 골라 리듬게임을 체험해요</p>
+            </div>
+
+            <div class="zone zone--2">
+              <div class="zone__head">
+                <span class="zone__num">02</span>
+                <div class="zone__names">
+                  <p class="zone__name">기록 테이블</p>
+                  <p class="zone__name-en">Record Table</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="zone zone--3">
+              <div class="zone__head">
+                <span class="zone__num">03</span>
+                <div class="zone__names">
+                  <p class="zone__name">감정 나무</p>
+                  <p class="zone__name-en">Emotion Tree</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 배경요소: 오른쪽 위 분홍 원, 반짝이 2개 -->
+        <img class="zones__circle-top-right" src="assets/images/exp-section01-zones/circle-top-right-pink.png" alt="">
+        <img class="zones__sparkle zones__sparkle--left" src="assets/images/exp-section01-zones/sparkle-left-pink.png" alt="">
+        <img class="zones__sparkle zones__sparkle--right" src="assets/images/exp-section01-zones/sparkle-right-blue.png" alt="">
+
+        <!-- 라벨, 형광펜, 제목, 설명 -->
+        <p class="zones__eyebrow">체험소개</p>
+        <span class="zones__highlight"></span>
+        <h1 class="zones__title">감정의 발견이,<br>공동의 기록으로 이어지도록</h1>
+        <p class="zones__lead">게임 속에서 발견한 감정의 말이 기록 테이블과 감정 나무를 거쳐<br>모두가 함께 채우는 숲이 되어요.</p>
+
+        <!-- 상단 메뉴 (GNB) — 스타일: css/gnb.css
+             로고 = 메인 페이지로, 메뉴 = 이 페이지 안 섹션으로 이동 -->
+        <header class="gnb">
+          <a class="gnb__logo-link" href="index.html"><img class="gnb__logo" src="assets/images/common/logo.png" alt="말모이 (메인으로)"></a>
+          <nav class="gnb__menu">
+            <a class="gnb__item" href="#experience">체험소개</a>
+            <a class="gnb__item" href="#word-record">단어기록</a>
+          </nav>
+        </header>
+
+      </div>
+    </section>
+
+    <!-- 2. 단어 기록 (Figma: 05 단어 기록) — 스타일: css/exp-section02-word-record.css -->
+    <section class="section section--word-record" id="word-record">
+      <div class="section__inner">
+
+        <!-- 배경요소: 왼쪽 하늘색 원, 오른쪽 아래 노란 원 -->
+        <img class="record__circle-left" src="assets/images/exp-section02-word-record/circle-left-blue.png" alt="">
+        <img class="record__circle-bottom-right" src="assets/images/exp-section02-word-record/circle-bottom-right-yellow.png" alt="">
+
+        <!-- 감정 나무 + 걸린 단어 카드 4장 (이미지에 글자·기울기 포함) -->
+        <img class="record__tree" src="assets/images/exp-section02-word-record/word-tree.png" alt="단어 카드가 걸린 감정 나무">
+        <p class="record__eyebrow">단어기록</p>
+        <p class="record__lead">게임이 끝나면 체험 공간 밖 기록 테이블로 이동해요.</p>
+        <img class="record__tag record__tag--bigam" src="assets/images/exp-section02-word-record/tag-bigamhada.png" alt="비감하다">
+        <img class="record__tag record__tag--hwanhui" src="assets/images/exp-section02-word-record/tag-hwanhuiropda.png" alt="환희롭다">
+        <img class="record__tag record__tag--bungae" src="assets/images/exp-section02-word-record/tag-bungaehada.png" alt="분개하다">
+        <img class="record__tag record__tag--heungchwi" src="assets/images/exp-section02-word-record/tag-heungchwiropda.png" alt="흥취롭다">
+
+        <!-- 오른쪽 아래 버튼 2개 — 스타일: css/floating-buttons.css -->
+        <div class="floating-buttons">
+          <a class="floating-buttons__intro" href="index.html">말모이</a>
+          <a class="floating-buttons__top" href="#experience"><img src="assets/images/common/btn-to-top.png" alt="맨 위로"></a>
+        </div>
+
+        <!-- 단계 카드 3개 (고르기 → 적기 → 걸기) -->
+        <div class="record-card record-card--pick">
+          <span class="record-card__num">01</span>
+          <div class="record-card__text">
+            <p class="record-card__title">고르기</p>
+            <p class="record-card__desc">게임에서 만난 단어 중 마음에 남는 말을 골라보세요.<br>새롭게 알게 된 말도, 지금 내 마음과 닮은 말도 좋아요.</p>
+          </div>
+        </div>
+        <div class="record-card record-card--write">
+          <span class="record-card__num">02</span>
+          <div class="record-card__text">
+            <p class="record-card__title">적기</p>
+            <p class="record-card__desc">준비된 종이 카드에 고른 단어를 적어보세요.<br>고른 이유나 떠오르는 순간을 함께 남겨도 좋아요.</p>
+          </div>
+        </div>
+        <div class="record-card record-card--hang">
+          <span class="record-card__num">03</span>
+          <div class="record-card__text">
+            <p class="record-card__title">걸기</p>
+            <p class="record-card__desc">작성한 카드를 실물 나무의 가지에 걸어주세요.<br>다른 관람객이 남긴 말도 살펴보세요.</p>
+          </div>
+        </div>
+
+        <!-- 배경요소: 음표, 반짝이, 오른쪽 위 노란 원, 형광펜 -->
+        <img class="record__music-note" src="assets/images/exp-section02-word-record/music-note-blue.png" alt="">
+        <img class="record__sparkle" src="assets/images/exp-section02-word-record/sparkle-pink.png" alt="">
+        <img class="record__circle-top-right" src="assets/images/exp-section02-word-record/circle-top-right-yellow.png" alt="">
+        <span class="record__highlight"></span>
+
+        <!-- 제목 -->
+        <h2 class="record__title">당신의 말도 나무에 걸어주세요</h2>
+
+      </div>
+    </section>
+
+    <!-- 3. 하단 푸터 (Footer) — 스타일: css/footer.css (메인 페이지와 같음) -->
+    <footer class="main-footer">
+      <div class="footer__inner">
+
+        <!-- 왼쪽: 로고 + 팀 이름 + 한 줄 소개 -->
+        <div class="footer__brand">
+          <img class="footer__logo" src="assets/images/common/logo.png" alt="말모이">
+          <div class="footer__brand-text">
+            <p class="footer__team">말모이 · Team OCTAVE</p>
+            <p class="footer__slogan">감정의 말을 모아, 감정의 숲을 채우다</p>
+          </div>
+        </div>
+
+        <!-- 오른쪽: 페이지 이동 메뉴 + 저작권 -->
+        <div class="footer__links">
+          <nav class="footer__menu">
+            <a class="footer__menu-item" href="index.html">말모이</a>
+            <a class="footer__menu-item" href="experience.html">체험소개</a>
+          </nav>
+          <p class="footer__copyright">© 2026 OCTAVE.</p>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

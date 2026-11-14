@@ -1,0 +1,144 @@
+/* =========================================================
+   exp-section02-word-record.css — 체험소개 2. 단어 기록
+   (Figma: 최종—체험소개 > 05 단어 기록, 1920 x 1484)
+   - 배경색은 experience.css 에 있고, 여기에는 배경 위에 얹는 요소만 있습니다.
+   - 모든 요소는 .section__inner(1920px 박스) 안에서
+     position: absolute + Figma 의 x(left) / y(top) 값으로 배치합니다.
+   - 이미지: assets/images/exp-section02-word-record/
+   - 카드는 기본(흰색) 모습입니다.
+     (색이 채워진 card-0X-...-active.png 는 스크롤 효과를 넣을 때 사용)
+   ========================================================= */
+
+.section--word-record .section__inner > * {
+  position: absolute;
+  margin: 0;
+}
+
+
+/* ---------- 1. 배경요소 ---------- */
+
+/* 왼쪽 하늘색 원, 오른쪽 아래·위 노란 원 (잘린/기울어진 모양 그대로 이미지로 받음) */
+.record__circle-left         { left: 0;      top: 326px;  width: 370px; height: 555px; }
+.record__circle-bottom-right { left: 1642px; top: 1065px; width: 278px; height: 319px; }
+.record__circle-top-right    { left: 1492px; top: 39px;   width: 198px; height: 198px; }
+
+/* 오른쪽 파란 음표, 왼쪽 분홍 반짝이 (이미지에 기울기 포함) */
+.record__music-note { left: 1413.5px; top: 332px;   width: 54px; height: 69px; }
+.record__sparkle    { left: 412.5px;  top: 295.5px; width: 69px; height: 69px; }
+
+/* 제목 아래 노란 형광펜 */
+.record__highlight {
+  left: 577px;
+  top: 291px;
+  width: 766px;
+  height: 14px;
+  border-radius: 7px;
+  background-color: rgba(255, 233, 74, 0.8);
+}
+
+
+/* ---------- 2. 라벨, 제목, 설명 (가운데 정렬) ---------- */
+.record__eyebrow {
+  left: 887.5px;
+  top: 167px;
+  width: 144px;
+  height: 46px;
+  border-radius: 999px;
+  background-color: var(--color-navy);
+  font-family: var(--font-title);
+  font-size: 20px;
+  line-height: 46px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.record__title {
+  left: 959.5px;
+  top: 241px;
+  transform: translateX(-50%);
+  font-family: var(--font-title);
+  font-size: 56px;
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--color-navy);
+  white-space: nowrap;
+}
+
+.record__lead {
+  left: 959.5px;
+  top: 333px;
+  width: 1009px;
+  transform: translateX(-50%);
+  font-family: var(--font-noto);
+  font-size: 30px;
+  line-height: 1.6;
+  color: var(--color-navy);
+  text-align: center;
+}
+
+
+/* ---------- 3. 감정 나무 + 단어 카드 ---------- */
+.record__tree { left: 1024px; top: 478px; width: 671px; height: 866px; }
+
+.record__tag--bigam     { left: 1070px; top: 753px; width: 172px; height: 112px; }
+.record__tag--hwanhui   { left: 1494px; top: 780px; width: 185px; height: 139px; }
+.record__tag--bungae    { left: 1398px; top: 631px; width: 177px; height: 121px; }
+.record__tag--heungchwi { left: 1177px; top: 566px; width: 175px; height: 117px; }
+
+
+/* ---------- 4. 단계 카드 3개 (고르기 → 적기 → 걸기) ---------- */
+/* 카드별로 다른 것: 위치, 번호 동그라미 색 */
+.record-card--pick  { top: 672px;  --card-num-bg: #ff9bea; }
+.record-card--write { top: 877px;  --card-num-bg: #8fe9ff; }
+.record-card--hang  { top: 1082px; --card-num-bg: #9df5b0; }
+
+.record-card {
+  left: 278px;
+  width: 672px;
+  height: 182px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 18px 24px 20px;
+  overflow: hidden;
+  border: 3px solid var(--color-navy);
+  border-radius: 32px;
+  background-color: #ffffff;
+  color: var(--color-navy);
+}
+
+.record-card__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  border: 3px solid var(--color-navy);
+  border-radius: 999px;
+  background-color: var(--card-num-bg);
+  font-family: var(--font-title);
+  font-size: 28px;
+}
+
+.record-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.record-card__title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 34px;
+  line-height: 44px; /* Figma 줄 높이 */
+}
+
+.record-card__desc {
+  margin: 0;
+  font-family: var(--font-noto);
+  font-size: 20px;
+  line-height: 1.5;
+  color: rgba(27, 26, 122, 0.8);
+  white-space: nowrap;
+}

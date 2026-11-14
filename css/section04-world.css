@@ -1,0 +1,118 @@
+/* =========================================================
+   section04-world.css — 4. 세계관 안내
+   (Figma: 04 세계관 안내, 1920 x 1282)
+   - 배경색은 main.css 에 있고, 여기에는 배경 위에 얹는 요소만 있습니다.
+   - 모든 요소는 .section__inner(1920px 박스) 안에서
+     position: absolute + Figma 의 x(left) / y(top) 값으로 배치합니다.
+   - 이미지: assets/images/section04-world/
+   - 인터랙션은 아직 넣지 않았습니다.
+   ========================================================= */
+
+.section--world .section__inner > * {
+  position: absolute;
+  margin: 0;
+}
+
+
+/* ---------- 1. 배경요소 ---------- */
+
+/* 오른쪽 위 노란 원 (711px, 섹션 위쪽 밖으로 나간 부분은 잘림) */
+.world__circle-clip {
+  left: 1408px;
+  top: 0;
+  width: 512px;
+  height: 405px;
+  overflow: hidden;
+}
+.world__circle-clip img {
+  position: absolute;
+  left: 0;
+  top: -306px;
+  width: 711px;
+  height: 711px;
+}
+
+/* 왼쪽 아래 분홍 원 (왼쪽이 잘린 모양 그대로 이미지로 받음) */
+.world__circle-bottom-left { left: 0; top: 990px; width: 206px; height: 260px; }
+
+/* 제목 양옆 반짝이 (이미지에 기울기 포함) */
+.world__sparkle--left  { left: 637.3px;  top: 121.2px; width: 54px; height: 54px; }
+.world__sparkle--right { left: 1219.1px; top: 204px;   width: 45px; height: 45px; }
+
+/* 제목 아래 노란 형광펜 */
+.world__highlight {
+  left: 959.5px;
+  top: 231px;
+  width: 497px;
+  height: 14px;
+  transform: translateX(-50%);
+  border-radius: 7px;
+  background-color: rgba(255, 233, 74, 0.8);
+}
+
+
+/* ---------- 2. 라벨 + 제목 (가운데 정렬) ---------- */
+.world__eyebrow {
+  left: 959.5px;
+  top: 105px;
+  width: 144px;
+  height: 46px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background-color: var(--color-navy);
+  font-family: var(--font-title);
+  font-size: 20px;
+  line-height: 46px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.world__title {
+  left: 959.5px;
+  top: 179px;
+  transform: translateX(-50%);
+  font-family: var(--font-title);
+  font-size: 56px;
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--color-navy);
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+/* ---------- 3. 세계관 영상 ---------- */
+/* Figma 에서는 영상이 채워진 둥근 사각형 (영상: assets/videos/world-intro.mp4)
+   - 영상이 불러와지기 전에는 검은 바탕이 보임 */
+.world__video {
+  left: 140px;
+  top: 296px;
+  width: 1640px;
+  height: 781px;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: #000000;
+}
+
+/* 영상을 상자에 꽉 차게 (비율이 달라도 빈 곳 없이 채우고 넘치는 부분은 잘림) */
+.world__video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ---------- 4. 영상 아래 설명 ---------- */
+.world__desc {
+  left: 959.5px;
+  top: 1120px;
+  width: 879px;
+  transform: translateX(-50%);
+  font-family: var(--font-pretendard);
+  font-size: 26px;
+  line-height: 43px;
+  letter-spacing: 0.26px;
+  color: var(--color-navy);
+  text-align: center;
+}

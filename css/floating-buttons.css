@@ -1,0 +1,50 @@
+/* =========================================================
+   floating-buttons.css — 오른쪽 아래 버튼 2개
+   (Figma: "button / 맨 위로" 동그란 글자 버튼 + 화살표 버튼)
+   - 두 페이지 마지막 섹션 안 Figma 위치(1707.5, 1041)에 고정되어 있고,
+     스크롤을 따라오지 않습니다.
+     · 메인 페이지 팀 소개 섹션:   "체험 소개" → experience.html / 화살표 → #hero
+     · 체험소개 페이지 단어 기록: "말모이"    → index.html      / 화살표 → #experience
+   ========================================================= */
+
+/* 두 버튼을 묶는 틀 — 위치 = 글자 버튼의 Figma 좌표 */
+.floating-buttons {
+  position: absolute;
+  left: 1707.5px;
+  top: 1041px;
+  width: 72px;
+  height: 150px;
+  margin: 0;
+}
+
+/* 동그란 글자 버튼 ("체험 소개" / "말모이") (Figma: 1707.5, 1041) */
+.floating-buttons__intro {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 72px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--color-navy);
+  border-radius: 999px;
+  background-color: #ffffff;
+  font-family: var(--font-title);
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--color-navy);
+  text-align: center;
+  text-decoration: none;
+}
+
+/* 맨 위로 화살표 버튼 (Figma: 1712, 1123) */
+.floating-buttons__top {
+  position: absolute;
+  left: 4.5px;
+  top: 82px;
+}
+.floating-buttons__top img {
+  width: 68px;
+  height: 68px;
+}

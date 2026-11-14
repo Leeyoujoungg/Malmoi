@@ -1,0 +1,143 @@
+/* =========================================================
+   section02-story.css — 2. 말모이 이야기
+   (Figma: 02 그 많은 말들은 어디로 갔을까요?, 1920 x 1080)
+   - 배경색은 main.css 에 있고, 여기에는 배경 위에 얹는 요소만 있습니다.
+   - 모든 요소는 .section__inner(1920px 박스) 안에서
+     position: absolute + Figma 의 x(left) / y(top) 값으로 배치합니다.
+   - 이미지: assets/images/section02-story/
+   - 인터랙션은 아직 넣지 않았습니다.
+   ========================================================= */
+
+.section--story .section__inner > * {
+  position: absolute;
+  margin: 0;
+}
+
+
+/* ---------- 1. 배경요소 ---------- */
+
+/* 오른쪽 위 음표, 왼쪽 위 분홍 반짝이 (이미지에 기울기 포함) */
+.story__music-note { left: 1562.4px; top: 242.1px; width: 54px; height: 69px; }
+.story__sparkle    { left: 298.6px;  top: 183.6px; width: 69px; height: 69px; }
+
+/* 제목 아래 노란 형광펜 */
+.story__highlight {
+  left: 962px;
+  top: 426px;
+  width: 780px;
+  height: 14px;
+  border-radius: 7px;
+  background-color: rgba(255, 233, 74, 0.8);
+}
+
+/* 나무 위쪽 점선 빈 단어 (이미지에 기울기·투명도 포함) */
+.story__ghost--1 { left: 787.1px; top: 254.1px; width: 112px; height: 57px; }
+.story__ghost--2 { left: 872px;   top: 184.9px; width: 100px; height: 55px; }
+
+/* 픽셀 조각 (16px 네모) */
+.story__pixel {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+.story__pixel--1 { left: 770px; top: 301.9px; background-color: rgba(46, 214, 122, 0.8); }
+.story__pixel--2 { left: 850px; top: 266.9px; background-color: rgba(255, 233, 74, 0.6); }
+.story__pixel--3 { left: 960px; top: 166.9px; background-color: rgba(46, 214, 122, 0.3); }
+.story__pixel--4 { left: 905px; top: 231.9px; background-color: #d3fadb; }
+
+/* 첫 화면 오른쪽 아래 분홍 원이 이 섹션까지 이어진 부분
+   - 원 전체(520px)는 이 섹션 기준 top -281px 에서 시작
+   - 섹션 위쪽 밖으로 나간 부분은 잘라서, 섹션 안에 들어온 아래쪽만 보이게 함 */
+.story__circle-clip {
+  left: 1380px;
+  top: 0;
+  width: 520px;
+  height: 239px;
+  overflow: hidden;
+}
+.story__circle-clip img {
+  position: absolute;
+  left: 0;
+  top: -281px;
+  width: 520px;
+  height: 520px;
+}
+
+
+/* ---------- 2. 단어 나무 + 감정 칩 ---------- */
+.story__tree { left: 172px; top: 307px; width: 731.1px; height: 556.2px; }
+
+.story__chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55.8px;
+  border: 1.8px solid var(--color-navy);
+  border-radius: 45px;
+  font-family: var(--font-jua);
+  font-size: 28.8px;
+  line-height: 1.2;
+  color: var(--color-navy);
+  white-space: nowrap;
+}
+.story__chip--joy   { left: 278px; top: 566px; width: 110.7px; background-color: #ff9bea; }
+.story__chip--anger { left: 388px; top: 436px; width: 112.5px; background-color: #ffd24a; }
+.story__chip--sad   { left: 595px; top: 385px; width: 108.9px; background-color: #8fe9ff; }
+.story__chip--fun   { left: 654px; top: 574px; width: 109.8px; background-color: #9df5b0; }
+
+
+/* ---------- 3. 글자 ---------- */
+
+/* 라벨 "말모이 이야기" */
+.story__eyebrow {
+  left: 970px;
+  top: 306px;
+  width: 163px;
+  height: 46px;
+  border-radius: 999px;
+  background-color: var(--color-navy);
+  font-family: var(--font-title);
+  font-size: 20px;
+  line-height: 46px;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* 제목 */
+.story__title {
+  left: 970px;
+  top: 376px;
+  font-family: var(--font-title);
+  font-size: 56px;
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--color-navy);
+  white-space: nowrap;
+}
+
+/* 본문 */
+.story__body {
+  left: 970px;
+  top: 470px;
+  width: 713px;
+  font-family: var(--font-pretendard);
+  font-size: 26px;
+  line-height: 43px;
+  letter-spacing: 0.26px;
+  color: var(--color-navy);
+}
+
+/* 강조 박스 (흰 박스 + 남색 테두리 + 분홍 그림자는 textbox-bg.png) */
+.story__textbox {
+  left: 970px;
+  top: 602px;
+  width: 764px;
+  height: 186px; /* 박스 174px + 아래 그림자 12px */
+  padding: 44px 48px 0; /* Figma 안쪽 여백 40/44 + 테두리 4px */
+  background: url("../assets/images/section02-story/textbox-bg.png") no-repeat top left / 100% 100%;
+  font-family: var(--font-pretendard);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 43px;
+  color: var(--color-navy);
+}
