@@ -2,6 +2,8 @@
    main.js — 메인 페이지 스크립트
    기능 목록
    1. 제작 과정 섹션: 스크롤 위치에 따라 배경 step(1~4) 바꾸기
+   2. 섹션이 화면에 들어오면 .is-visible 붙이기 (움직임은 각 섹션 CSS)
+   3. 네 가지 플레이: 카드에 마우스를 올리면 게임 영상 재생
    (메뉴·버튼을 눌러 섹션으로 이동하는 건 HTML 링크(href="#아이디")
     + base.css 의 scroll-behavior: smooth 로, 메뉴 호버 색은 css/gnb.css 로
     처리해서 JS 가 필요 없습니다)
@@ -9,6 +11,8 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   initMakingSectionSteps();
+  initRevealOnScroll();
+  initModeCardVideos();
 });
 
 
@@ -45,4 +49,37 @@ function initMakingSectionSteps() {
   window.addEventListener("scroll", updateStep, { passive: true });
   window.addEventListener("resize", updateStep);
   updateStep();
+}
+
+
+/* ---------------------------------------------------------
+   2. 섹션 등장 효과
+   - 섹션이 40% 이상 보이면 .is-visible 을 붙이고, 한 번 붙으면 끝.
+   - 대상 섹션: 말모이 이야기
+   --------------------------------------------------------- */
+function initRevealOnScroll() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(document.querySelector(".section--story"));
+}
+
+
+/* ---------------------------------------------------------
+   3. 네 가지 플레이 카드 영상
+   - 마우스를 올리면 재생, 떼면 멈추고 처음 사진(poster)으로 되돌림
+   --------------------------------------------------------- */
+function initModeCardVideos() {
+  document.querySelectorAll(".mode-card").forEach((card) => {
+    const video = card.querySelector("video");
+
+    card.addEventListener("mouseenter", () => video.play());
+    card.addEventListener("mouseleave", () => video.load()); // load() = 처음 상태(poster)로
+  });
 }

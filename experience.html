@@ -31,7 +31,8 @@
   <div class="page">
 
     <!-- 1. 체험 소개 (Figma: 전시 현장 — 구상도) — 스타일: css/exp-section01-zones.css
-         지금은 1단계(메인 체험 공간)가 선택된 모습으로 고정 -->
+         오른쪽 공간(.zone)을 클릭하면 선택이 바뀌고 왼쪽 평면도도 바뀜 — js/experience.js
+         처음에는 1단계(메인 체험 공간)가 선택된 상태 -->
     <section class="section section--exp-intro" id="experience">
       <div class="section__inner">
 
@@ -45,12 +46,15 @@
 
           <!-- 전시 평면도 (1단계: 메인 체험 공간 강조) -->
           <img class="zones__floor-plan" src="assets/images/exp-section01-zones/floor-plan-step1-main-zone.png" alt="전시장 평면도: 입구에서 메인 체험 공간, 기록 테이블, 감정 나무 순서로 이동">
+          <!-- 공간을 클릭하면 평면도 위 해당 공간이 그 색으로 깜빡임 — js/experience.js -->
+          <span class="zones__blink"></span>
 
           <!-- 오른쪽 공간 안내 패널 -->
           <div class="zones__panel">
             <h3 class="zones__panel-title">전시장에서는<br>이렇게 움직여요</h3>
 
-            <div class="zone zone--1 zone--active">
+            <!-- data-plan = 이 공간을 골랐을 때 보여줄 평면도 이미지 -->
+            <div class="zone zone--1 zone--active" data-plan="assets/images/exp-section01-zones/floor-plan-step1-main-zone.png">
               <div class="zone__head">
                 <span class="zone__num">01</span>
                 <div class="zone__names">
@@ -61,7 +65,7 @@
               <p class="zone__desc">요정을 골라 리듬게임을 체험해요</p>
             </div>
 
-            <div class="zone zone--2">
+            <div class="zone zone--2" data-plan="assets/images/exp-section01-zones/floor-plan-step2-record-table.png">
               <div class="zone__head">
                 <span class="zone__num">02</span>
                 <div class="zone__names">
@@ -69,9 +73,10 @@
                   <p class="zone__name-en">Record Table</p>
                 </div>
               </div>
+              <p class="zone__desc">마음에 남은 말을 카드에 적어요</p>
             </div>
 
-            <div class="zone zone--3">
+            <div class="zone zone--3" data-plan="assets/images/exp-section01-zones/floor-plan-step3-emotion-tree.png">
               <div class="zone__head">
                 <span class="zone__num">03</span>
                 <div class="zone__names">
@@ -79,6 +84,8 @@
                   <p class="zone__name-en">Emotion Tree</p>
                 </div>
               </div>
+              <!-- 임시 문구: 디자인 시안에는 02와 같은 문구가 들어가 있어 확정 필요 -->
+              <p class="zone__desc">카드를 나무에 걸어 함께 숲을 채워요</p>
             </div>
           </div>
         </div>
@@ -191,5 +198,8 @@
     </footer>
 
   </div>
+
+  <script src="js/fit-width.js"></script>
+  <script src="js/experience.js"></script>
 </body>
 </html>

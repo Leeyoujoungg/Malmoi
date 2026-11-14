@@ -5,7 +5,7 @@
    - 모든 요소는 .section__inner(1920px 박스) 안에서
      position: absolute + Figma 의 x(left) / y(top) 값으로 배치합니다.
    - 이미지: assets/images/section02-story/
-   - 인터랙션은 아직 넣지 않았습니다.
+   - 움직임: 4번 (화면에 들어오면 js/main.js 가 .is-visible 을 붙임)
    ========================================================= */
 
 .section--story .section__inner > * {
@@ -141,3 +141,23 @@
   line-height: 43px;
   color: var(--color-navy);
 }
+
+
+/* ---------- 4. 움직임 ---------- */
+
+/* 형광펜: 왼쪽에서 오른쪽으로 그려짐 */
+.story__highlight {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s ease-out;
+}
+
+/* 강조 박스: 형광펜이 다 그려지면 아래에서 올라옴 */
+.story__textbox {
+  opacity: 0;
+  translate: 0 40px;
+  transition: opacity 0.6s ease-out 0.7s, translate 0.6s ease-out 0.7s;
+}
+
+.section--story.is-visible .story__highlight { transform: scaleX(1); }
+.section--story.is-visible .story__textbox   { opacity: 1; translate: 0 0; }

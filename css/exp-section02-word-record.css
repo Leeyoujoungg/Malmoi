@@ -5,8 +5,7 @@
    - 모든 요소는 .section__inner(1920px 박스) 안에서
      position: absolute + Figma 의 x(left) / y(top) 값으로 배치합니다.
    - 이미지: assets/images/exp-section02-word-record/
-   - 카드는 기본(흰색) 모습입니다.
-     (색이 채워진 card-0X-...-active.png 는 스크롤 효과를 넣을 때 사용)
+   - 움직임: 5번 (화면에 들어오면 js/experience.js 가 .is-visible 을 붙임)
    ========================================================= */
 
 .section--word-record .section__inner > * {
@@ -88,9 +87,9 @@
 
 /* ---------- 4. 단계 카드 3개 (고르기 → 적기 → 걸기) ---------- */
 /* 카드별로 다른 것: 위치, 번호 동그라미 색 */
-.record-card--pick  { top: 672px;  --card-num-bg: #ff9bea; }
-.record-card--write { top: 877px;  --card-num-bg: #8fe9ff; }
-.record-card--hang  { top: 1082px; --card-num-bg: #9df5b0; }
+.record-card--pick  { top: 672px;  --card-num-bg: #ff9bea; --card-fill: #fff0fa; }
+.record-card--write { top: 877px;  --card-num-bg: #8fe9ff; --card-fill: #d9fbff; }
+.record-card--hang  { top: 1082px; --card-num-bg: #9df5b0; --card-fill: #ebffc3; }
 
 .record-card {
   left: 278px;
@@ -141,4 +140,28 @@
   line-height: 1.5;
   color: rgba(27, 26, 122, 0.8);
   white-space: nowrap;
+}
+
+
+/* ---------- 5. 움직임 ----------
+   - 카드: 위에서부터 0.6초 간격으로 색이 채워짐, 마우스를 올리면 살짝 커짐
+   - 나무의 단어 카드: 마지막 카드가 채워질 때부터 계속 흔들림 */
+.record-card {
+  transition: background-color 0.5s var(--fill-delay, 0s), scale 0.25s ease-out;
+}
+.record-card--write      { --fill-delay: 0.6s; }
+.record-card--hang       { --fill-delay: 1.2s; }
+.is-visible .record-card { background-color: var(--card-fill); }
+.record-card:hover       { scale: 1.04; }
+
+.record__tag { transform-origin: top center; } /* 위쪽 구멍을 축으로 흔들림 */
+.is-visible .record__tag              { animation: tag-sway 1.6s ease-in-out 1.3s infinite; }
+.is-visible .record__tag--hwanhui     { animation-delay: 1.7s; }
+.is-visible .record__tag--bungae      { animation-delay: 1.5s; }
+.is-visible .record__tag--heungchwi   { animation-delay: 1.9s; }
+
+@keyframes tag-sway {
+  0%, 100% { rotate: 0deg; }
+  25%      { rotate: 6deg; }
+  75%      { rotate: -6deg; }
 }

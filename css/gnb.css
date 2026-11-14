@@ -4,7 +4,8 @@
    - 각 페이지 첫 섹션 안 Figma 위치(왼쪽 140px, 위 60px)에 고정되어 있고,
      스크롤을 따라오지 않습니다.
    - 메뉴를 누르면 href 의 #아이디 섹션으로 부드럽게 이동합니다. (base.css 의 scroll-behavior)
-   - 메뉴 색: 기본은 네이비 글자, 마우스를 올렸을 때만 분홍 배경 + 흰 글자
+   - 메뉴 색: 첫 번째 메뉴(= 지금 페이지)가 분홍 배경 + 흰 글자 (Figma GNB 기본 모습)
+     다른 메뉴에 마우스를 올리면 분홍이 그 메뉴로 옮겨감
    ========================================================= */
 
 .gnb {
@@ -54,10 +55,17 @@
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* 마우스를 올렸을 때만: 분홍 배경 + 흰 글자
+/* 분홍 배경 + 흰 글자: 첫 번째 메뉴 기본, 또는 마우스를 올린 메뉴
    (:focus-visible = 키보드 Tab 으로 메뉴를 고를 때도 똑같이 보이게) */
+.gnb__item:first-child,
 .gnb__item:hover,
 .gnb__item:focus-visible {
   background-color: var(--color-hot-pink);
   color: #ffffff;
+}
+
+/* 다른 메뉴에 마우스를 올리면 첫 번째 메뉴는 기본 모습으로 */
+.gnb__menu:hover .gnb__item:first-child:not(:hover) {
+  background-color: transparent;
+  color: var(--color-navy);
 }

@@ -5,7 +5,7 @@
    - 모든 요소는 .section__inner(1920px 박스) 안에서
      position: absolute + Figma 의 x(left) / y(top) 값으로 배치합니다.
    - 이미지: assets/images/section06-how-to-play/
-   - 인터랙션은 아직 넣지 않았습니다.
+   - 움직임: 흐름 바에 마우스를 올리면 단계 칩이 왼쪽부터 하나씩 강조됨 (맨 아래)
    ========================================================= */
 
 .section--how-to-play .section__inner > * {
@@ -171,9 +171,10 @@
 }
 .play-flow__chip img { width: 48px; height: 48px; }
 
-.play-flow__chip--sound { background-color: #ff9bea; }
-.play-flow__chip--hand  { background-color: #8fe9ff; }
-.play-flow__chip--card  { background-color: #9df5b0; }
+.play-flow__chip--sound { --chip-bg: #ff9bea; }
+.play-flow__chip--hand  { --chip-bg: #8fe9ff; }
+.play-flow__chip--card  { --chip-bg: #9df5b0; }
+.play-flow__chip        { background-color: var(--chip-bg); }
 
 /* 칩 사이 화살표 */
 .play-flow__arrow {
@@ -188,4 +189,17 @@
   font-size: 24px;
   font-weight: 700;
   color: #ffffff;
+}
+
+
+/* ---------- 움직임: 흐름 바 호버시 칩이 왼쪽부터 하나씩 강조 ----------
+   2.4초 한 바퀴 중 각 칩이 0.8초씩 색이 차고, 나머지 시간은 흰색.
+   음수 delay 로 시작 위치를 밀어서 1 → 2 → 3 순서가 되게 함 */
+.play-flow:hover .play-flow__chip       { animation: flow-step 2.4s infinite; }
+.play-flow:hover .play-flow__chip--hand { animation-delay: -1.6s; }
+.play-flow:hover .play-flow__chip--card { animation-delay: -0.8s; }
+
+@keyframes flow-step {
+  0%, 33%   { background-color: var(--chip-bg); }
+  34%, 100% { background-color: #ffffff; }
 }
