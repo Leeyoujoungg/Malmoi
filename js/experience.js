@@ -1,6 +1,6 @@
 /* =========================================================
    experience.js — 체험소개 페이지 스크립트
-   1. 공간(01·02·03) 클릭 → 선택 표시 이동 + 평면도 이미지 교체
+   1. 공간(01·02·03) 마우스 올리면(호버) →선택 표시 이동 + 평면도 이미지 교체
    2. 단어 기록 섹션이 화면에 들어오면 .is-visible 붙이기 (움직임은 CSS)
    ========================================================= */
 
@@ -11,7 +11,7 @@ const zones = document.querySelectorAll(".zone");
 const floorPlan = document.querySelector(".zones__floor-plan");
 
 zones.forEach((zone) => {
-  zone.addEventListener("click", () => {
+  zone.addEventListener("mouseenter", () => {
     zones.forEach((z) => z.classList.remove("zone--active"));
     zone.classList.add("zone--active");
     floorPlan.src = zone.dataset.plan; // HTML 의 data-plan 에 적힌 이미지
