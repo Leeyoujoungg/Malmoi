@@ -39,7 +39,8 @@ function initMakingSectionSteps() {
     const wrapperRect = wrapper.getBoundingClientRect();
 
     // 고정된 채로 스크롤할 수 있는 거리 (= 바깥 틀 높이 - 섹션 높이)
-    const pinnedDistance = wrapperRect.height - section.offsetHeight;
+    // (둘 다 getBoundingClientRect 로 재야 fit-width.js 의 확대/축소 배율이 똑같이 적용됨)
+    const pinnedDistance = wrapperRect.height - section.getBoundingClientRect().height;
 
     // 0 = 섹션이 막 고정됐을 때, 1 = 고정이 풀리기 직전
     const progress = -wrapperRect.top / pinnedDistance;
