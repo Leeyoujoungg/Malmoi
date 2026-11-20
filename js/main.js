@@ -23,8 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ---------------------------------------------------------
    1. 제작 과정 섹션 (06 말모이가 만들어지기까지)
-   - 섹션을 is-pinned 클래스(position: fixed)로 화면 맨 위에 고정합니다.
-     (CSS sticky 는 Safari + zoom 에서 깨져서 JS 로 직접 고정)
+   - 섹션은 CSS(sticky)로 화면 맨 위에 고정됩니다.
    - 고정되어 있는 동안의 스크롤 구간을 4등분해서
      step 1 → 2 → 3 → 4 로 바꿉니다.
    - 실제 색은 css/main.css 의 .section--making[data-step] 에 있습니다.
@@ -49,11 +48,6 @@ function initMakingSectionSteps() {
 
     // 0 = 섹션이 막 고정됐을 때, 1 = 고정이 풀리기 직전
     const progress = -startTop / pinnedDistance;
-
-    // 고정 전 / 고정 중 / 고정 끝
-    section.classList.toggle("is-pinned", progress >= 0 && progress < 1);
-    section.classList.toggle("is-after", progress >= 1);
-
     const clamped = Math.min(Math.max(progress, 0), 0.999);
     const step = Math.floor(clamped * STEP_COUNT) + 1;
 
@@ -65,6 +59,12 @@ function initMakingSectionSteps() {
   window.addEventListener("scroll", updateStep, { passive: true });
   window.addEventListener("resize", updateStep);
   updateStep();
+
+  // step 2~4 그림은 처음엔 숨겨져 있어서, 처음 보일 때 큰 이미지를 푸느라 화면이 끊김
+  // → 페이지가 열리면 미리 풀어 둠 (decode)
+  section.querySelectorAll("img").forEach((img) => {
+    img.decode().catch(() => {});
+  });
 }
 
 
