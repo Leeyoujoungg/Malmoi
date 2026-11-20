@@ -14,7 +14,8 @@
   <!-- 공통 스타일 (폰트, 색상 변수, 초기화) -->
   <link rel="stylesheet" href="css/base.css">
   <!-- 메인 페이지 섹션 배경 (Figma: Frame 5907) — 확정, 수정 금지 -->
-  <link rel="stylesheet" href="css/main.css">
+  <!-- ?v=숫자: 파일을 고치면 숫자를 올려야 브라우저가 예전 파일(캐시)을 안 씀 -->
+  <link rel="stylesheet" href="css/main.css?v=4">
   <!-- 섹션별 요소 (글자, 이미지, 배치) -->
   <link rel="stylesheet" href="css/section01-hero.css">
   <link rel="stylesheet" href="css/section02-story.css">
@@ -23,7 +24,7 @@
   <link rel="stylesheet" href="css/section05-fairies.css">
   <link rel="stylesheet" href="css/section06-how-to-play.css">
   <link rel="stylesheet" href="css/section07-play-modes.css">
-  <link rel="stylesheet" href="css/section08-making.css">
+  <link rel="stylesheet" href="css/section08-making.css?v=4">
   <link rel="stylesheet" href="css/section09-team.css">
   <link rel="stylesheet" href="css/footer.css">
   <!-- 메뉴, 버튼 (클릭하면 섹션 이동) -->
@@ -552,7 +553,8 @@
 
         </div>
       </section>
-      <!-- 고정이 풀리는 지점 표시 (보이지 않음, js/main.js 가 step 계산에 사용) -->
+      <!-- 고정이 시작·풀리는 지점 표시 (보이지 않음, js/main.js 가 step 계산에 사용) -->
+      <div class="making-scroll__start" aria-hidden="true"></div>
       <div class="making-scroll__end" aria-hidden="true"></div>
     </div>
 
@@ -629,7 +631,7 @@
   </div>
 
   <!-- 메인 페이지 스크립트 -->
-  <script src="js/fit-width.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/fit-width.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>

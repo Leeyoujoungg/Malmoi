@@ -89,15 +89,21 @@
   margin-top: calc(80px * var(--fit, 1)); /* Figma 에서 위 섹션과 80px 떨어져 있음 (그 사이는 흰색) */
 }
 
-/* 고정이 풀리는 지점 표시 (높이 0, 안 보임)
-   = 바깥 틀 맨 아래에서 섹션 높이만큼 위. js/main.js 가 step 계산에 씀 */
+/* 고정이 시작·풀리는 지점 표시 (높이 0, 안 보임). js/main.js 가 step 계산에 씀
+   - start = 바깥 틀 맨 위
+   - end   = 바깥 틀 맨 아래에서 섹션 높이만큼 위 */
+.making-scroll__start,
 .making-scroll__end {
   position: absolute;
   left: 0;
-  top: calc(100% - var(--making-height) * var(--fit, 1));
+  top: 0;
   width: 100%;
   height: 0;
   pointer-events: none;
+}
+
+.making-scroll__end {
+  top: calc(100% - var(--making-height) * var(--fit, 1));
 }
 
 /* 고정되는 섹션 */

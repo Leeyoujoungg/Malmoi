@@ -31,16 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
 function initMakingSectionSteps() {
   const wrapper = document.querySelector(".making-scroll");
   const section = document.querySelector(".section--making");
+  const startMarker = document.querySelector(".making-scroll__start");
   const endMarker = document.querySelector(".making-scroll__end");
-  if (!wrapper || !section || !endMarker) return;
+  if (!wrapper || !section || !startMarker || !endMarker) return;
 
   const STEP_COUNT = 4;
 
   function updateStep() {
-    // 바깥 틀 맨 위, 고정이 풀리는 지점의 화면상 위치
-    // (위치(top)끼리만 비교해야 함: Safari(맥)는 fit-width.js 의 zoom 이 걸리면
-    //  top 과 height 를 서로 다른 배율로 돌려줘서, height 를 섞으면 계산이 틀어짐)
-    const startTop = wrapper.getBoundingClientRect().top;
+    // 고정이 시작되는 지점, 풀리는 지점의 화면상 위치
+    // (Safari(맥)는 zoom 이 걸리면 getBoundingClientRect 를 틀린 배율로 돌려줌.
+    //  그래서 똑같은 환경에 있는 표시 2개의 top 끼리만 비교 → 배율이 틀려도 비율은 맞음.
+    //  바깥 틀 자체는 fit-width.js 가 zoom 을 따로 걸어서 표시와 배율이 다를 수 있어 쓰지 않음)
+    const startTop = startMarker.getBoundingClientRect().top;
     const endTop = endMarker.getBoundingClientRect().top;
 
     // 고정된 채로 스크롤할 수 있는 거리
