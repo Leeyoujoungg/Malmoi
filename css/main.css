@@ -66,7 +66,9 @@
 
 /* ---------- 8. 제작 과정 (Rectangle 1388 / 06 말모이가 만들어지기까지) ---------- */
 /* 동작 방식
-   - 섹션이 화면 맨 위에 닿으면 그 자리에 고정(sticky)됩니다.
+   - 섹션이 화면 맨 위에 닿으면 그 자리에 고정됩니다.
+     (CSS sticky 는 Safari 에서 fit-width.js 의 zoom 과 같이 쓰면 깨져서,
+      js/main.js 가 is-pinned / is-after 클래스를 붙여 고정·해제합니다)
    - 고정된 동안 스크롤하면 배경색이 step 01 → 04 순서로 바뀌고,
      step 04 가 끝나면 다시 아래로 스크롤됩니다.
    - 어떤 step 인지는 js/main.js 가 data-step 속성(1~4)으로 붙여줍니다.
@@ -84,13 +86,38 @@
   margin-top: 80px; /* Figma 에서 위 섹션과 80px 떨어져 있음 (그 사이는 흰색) */
 }
 
-/* 고정되는 섹션 */
+/* 고정이 풀리는 지점 표시 (높이 0, 안 보임)
+   = 바깥 틀 맨 아래에서 섹션 높이만큼 위. js/main.js 가 step 계산에 씀 */
+.making-scroll__end {
+  position: absolute;
+  left: 0;
+  top: calc(100% - var(--making-height));
+  width: 100%;
+  height: 0;
+  pointer-events: none;
+}
+
+/* 고정되는 섹션
+   - 기본(고정 전): 바깥 틀 맨 위
+   - .is-pinned (고정 중): 화면 맨 위에 붙음
+   - .is-after (고정 끝): 바깥 틀 맨 아래 → 이어서 위로 스크롤됨 */
 .section--making {
-  position: sticky;
+  position: absolute;
   top: 0;
+  left: 0;
+  width: var(--page-width);
   height: var(--making-height);
   background-color: var(--color-pink); /* 기본값 = step 01 */
   transition: background-color 0.5s ease;
+}
+
+.section--making.is-pinned {
+  position: fixed;
+}
+
+.section--making.is-after {
+  top: auto;
+  bottom: 0;
 }
 
 .section--making[data-step="1"] { background-color: var(--color-pink); }   /* #FFE3F3 */

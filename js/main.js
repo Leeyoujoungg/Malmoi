@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ---------------------------------------------------------
    1. 제작 과정 섹션 (06 말모이가 만들어지기까지)
-   - 섹션은 CSS(sticky)로 화면 맨 위에 고정됩니다.
+   - 섹션을 is-pinned 클래스(position: fixed)로 화면 맨 위에 고정합니다.
+     (CSS sticky 는 Safari + zoom 에서 깨져서 JS 로 직접 고정)
    - 고정되어 있는 동안의 스크롤 구간을 4등분해서
      step 1 → 2 → 3 → 4 로 바꿉니다.
    - 실제 색은 css/main.css 의 .section--making[data-step] 에 있습니다.
@@ -31,19 +32,28 @@ document.addEventListener("DOMContentLoaded", () => {
 function initMakingSectionSteps() {
   const wrapper = document.querySelector(".making-scroll");
   const section = document.querySelector(".section--making");
-  if (!wrapper || !section) return;
+  const endMarker = document.querySelector(".making-scroll__end");
+  if (!wrapper || !section || !endMarker) return;
 
   const STEP_COUNT = 4;
 
   function updateStep() {
-    const wrapperRect = wrapper.getBoundingClientRect();
+    // 바깥 틀 맨 위, 고정이 풀리는 지점의 화면상 위치
+    // (위치(top)끼리만 비교해야 함: Safari(맥)는 fit-width.js 의 zoom 이 걸리면
+    //  top 과 height 를 서로 다른 배율로 돌려줘서, height 를 섞으면 계산이 틀어짐)
+    const startTop = wrapper.getBoundingClientRect().top;
+    const endTop = endMarker.getBoundingClientRect().top;
 
-    // 고정된 채로 스크롤할 수 있는 거리 (= 바깥 틀 높이 - 섹션 높이)
-    // (둘 다 getBoundingClientRect 로 재야 fit-width.js 의 확대/축소 배율이 똑같이 적용됨)
-    const pinnedDistance = wrapperRect.height - section.getBoundingClientRect().height;
+    // 고정된 채로 스크롤할 수 있는 거리
+    const pinnedDistance = endTop - startTop;
 
     // 0 = 섹션이 막 고정됐을 때, 1 = 고정이 풀리기 직전
-    const progress = -wrapperRect.top / pinnedDistance;
+    const progress = -startTop / pinnedDistance;
+
+    // 고정 전 / 고정 중 / 고정 끝
+    section.classList.toggle("is-pinned", progress >= 0 && progress < 1);
+    section.classList.toggle("is-after", progress >= 1);
+
     const clamped = Math.min(Math.max(progress, 0), 0.999);
     const step = Math.floor(clamped * STEP_COUNT) + 1;
 
