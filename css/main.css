@@ -67,7 +67,11 @@
 /* ---------- 8. 제작 과정 (Rectangle 1388 / 06 말모이가 만들어지기까지) ---------- */
 /* 동작 방식
    - 섹션이 화면 맨 위에 닿으면 그 자리에 고정(sticky)됩니다.
-     (JS 로 fixed 를 붙였다 떼는 방식은 맥 Safari 에서 끊기고 위치가 틀어져서 sticky 사용)
+   - 맥 Safari 는 zoom 이 걸린 곳에서 sticky 가 풀리는 위치를 틀리게 계산함
+     (고정이 풀릴 때 흰 화면 → 04 가 다시 나옴).
+     그래서 js/fit-width.js 가 바깥 틀(.making-scroll)만 zoom 을 되돌려(1/배율) 배율 1 로 두고,
+     안쪽 내용(.section__inner)에만 다시 배율을 겁니다.
+     → 바깥 틀과 섹션 높이는 실제 화면 px 이라서 아래에서 var(--fit)(=배율)을 곱합니다.
    - 고정된 동안 스크롤하면 배경색이 step 01 → 04 순서로 바뀌고,
      step 04 가 끝나면 다시 아래로 스크롤됩니다.
    - 어떤 step 인지는 js/main.js 가 data-step 속성(1~4)으로 붙여줍니다.
@@ -75,14 +79,14 @@
    - step 하나당 스크롤 길이는 --making-step-scroll 로 조절합니다.
      (이 고정 구간 때문에 페이지 전체 높이는 Figma 보다 길어집니다) */
 
-/* 바깥 틀: 섹션 높이 + (step 수 - 1) x step 스크롤 길이 */
+/* 바깥 틀: (섹션 높이 + (step 수 - 1) x step 스크롤 길이) x 배율 */
 .making-scroll {
   --making-height: 1080px;
   --making-step-scroll: 1080px;
 
   position: relative;
-  height: calc(var(--making-height) + 3 * var(--making-step-scroll));
-  margin-top: 80px; /* Figma 에서 위 섹션과 80px 떨어져 있음 (그 사이는 흰색) */
+  height: calc((var(--making-height) + 3 * var(--making-step-scroll)) * var(--fit, 1));
+  margin-top: calc(80px * var(--fit, 1)); /* Figma 에서 위 섹션과 80px 떨어져 있음 (그 사이는 흰색) */
 }
 
 /* 고정이 풀리는 지점 표시 (높이 0, 안 보임)
@@ -90,7 +94,7 @@
 .making-scroll__end {
   position: absolute;
   left: 0;
-  top: calc(100% - var(--making-height));
+  top: calc(100% - var(--making-height) * var(--fit, 1));
   width: 100%;
   height: 0;
   pointer-events: none;
@@ -100,7 +104,7 @@
 .section--making {
   position: sticky;
   top: 0;
-  height: var(--making-height);
+  height: calc(var(--making-height) * var(--fit, 1));
   background-color: var(--color-pink); /* 기본값 = step 01 */
   transition: background-color 0.5s ease;
 }

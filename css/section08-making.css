@@ -9,6 +9,7 @@
    ========================================================= */
 
 .section--making .section__inner {
+  height: var(--making-height); /* 안쪽은 fit-width.js 가 다시 배율을 걸어서 1080 그대로 */
   overflow: hidden; /* 고정된 동안 원이 위·아래 섹션으로 삐져나오지 않게 */
 }
 
